@@ -19,7 +19,7 @@ import javax.ws.rs.core.MediaType;
  *
  * @author kari
  */
-@Path("api")
+@Path("acess")
 public class AccessWS {
 
     @Context
