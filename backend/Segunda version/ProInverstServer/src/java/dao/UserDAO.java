@@ -5,6 +5,10 @@
  */
 package dao;
 
+import com.github.javafaker.Faker;
+import java.util.Locale;
+import pojos.User;
+
 /**
  *
  * @author kari
