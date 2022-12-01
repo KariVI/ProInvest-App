@@ -5,6 +5,7 @@
  */
 package pojos;
 
+import com.github.javafaker.DateAndTime;
 import java.util.Date;
 
 /**
@@ -12,6 +13,7 @@ import java.util.Date;
  * @author kari
  */
 public class User {
+    private Integer idUser;
     private String contrasena;
     private String correo;
     private Date horaAcceso;
@@ -24,6 +26,14 @@ public class User {
         this.contrasena = contrasena;
         this.correo = correo;
         this.horaAcceso = horaAcceso;
+    }
+    
+    public Integer getIdUser() {
+        return idUser;
+    }
+    
+    public void setIdUser(Integer idUser) {
+        this.idUser = idUser;
     }
 
     public String getContrasena() {
