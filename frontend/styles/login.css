@@ -1,5 +1,30 @@
 .login-form{
-    margin-top: 30%;
+    margin-top: 12%;
     width: 80%;
 }
 
+.left-side{
+    background-color: #83C0EB;
+    height: 100%;
+    width: 50%;
+}
+
+.right-side{
+    width: 50%;
+}
+
+.row{
+    margin-right: -0px;
+}
+
+.img-fluid{
+    max-width: 90%;
+}
+
+
+.title{
+    color: #70a3cd;
+    margin-top: 12%;
+    margin-right: 20%;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
