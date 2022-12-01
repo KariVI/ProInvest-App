@@ -1,4 +1,4 @@
-DROP database proinvest;
+DROP database IF EXISTS proinvest;
 ----------------
 CREATE DATABASE ProInvest;
 USE ProInvest;

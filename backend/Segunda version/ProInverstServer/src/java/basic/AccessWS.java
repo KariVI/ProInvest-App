@@ -19,35 +19,9 @@ import javax.ws.rs.core.MediaType;
  *
  * @author kari
  */
-@Path("acess")
+@Path("access")
 public class AccessWS {
-
-    @Context
-    private UriInfo context;
-
-    /**
-     * Creates a new instance of AccessWS
-     */
-    public AccessWS() {
-    }
-
-    /**
-     * Retrieves representation of an instance of basic.AccessWS
-     * @return an instance of java.lang.String
-     */
-    @GET
-    @Produces(MediaType.APPLICATION_XML)
-    public String getXml() {
-        //TODO return proper representation object
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * PUT method for updating or creating an instance of AccessWS
-     * @param content representation for the resource
-     */
-    @PUT
-    @Consumes(MediaType.APPLICATION_XML)
-    public void putXml(String content) {
-    }
+    
+    
+    
 }
