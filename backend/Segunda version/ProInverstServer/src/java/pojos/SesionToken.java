@@ -10,7 +10,6 @@ package pojos;
  */
 public class SesionToken {
     private Integer id;
-    private String nombre;
     private String email;
     private String tokenacceso;
     
@@ -18,9 +17,8 @@ public class SesionToken {
         
     }
     
-    public SesionToken(Integer id, String nombre, String email, String tokenacceso) {
+    public SesionToken(Integer id, String email, String tokenacceso) {
         this.id = id;
-        this.nombre = nombre;
         this.email = email;
         this.tokenacceso = tokenacceso;
     }
@@ -31,14 +29,6 @@ public class SesionToken {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
     }
 
     public String getEmail() {

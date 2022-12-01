@@ -19,6 +19,7 @@ import javax.ws.rs.core.MediaType;
 import pojos.Respuesta;
 import pojos.SesionToken;
 import pojos.User;
+import seguridad.AutorizacionTokenJWT;
 
 /**
  * REST Web Service
@@ -28,6 +29,66 @@ import pojos.User;
 @Path("access")
 public class AccessWS {
     
+    @POST
+    @Path("login")
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Respuesta login(
+            @FormParam("email") String email,
+            @FormParam("contrasena") String contrasena
+    ) {
+        Respuesta res = new Respuesta();
+        //--------VALIDAR PARAMETROS DE ENTRADA--------------//
+        if(email==null || email.trim().isEmpty()){
+            res.setError(true);
+            res.setMensaje("El email es un dato requerido...");
+            return res;
+        }else if(contrasena==null || contrasena.trim().isEmpty()){
+            res.setError(true);
+            res.setMensaje("La contraseña es un dato requerido...");
+            return res;
+        }
+        //--------VALIDAR CREDENCIALES DEL EMPLEADO----------//
+        User u = UserDAO.login(email, contrasena);
+        if(u==null) {
+            res.setError(true);
+            res.setMensaje("No se encontró ningún empleado con esas credenciales...");
+            return res;
+        }
+        //------GENERAR TOKEN CON JWT Y DEVOLVERLO-----------//
+        SesionToken s = new SesionToken(); s.setId(u.getIdUser());
+        s.setEmail(u.getCorreo());
+        s = AutorizacionTokenJWT.generarToken(s);
+        if(s==null || s.getTokenacceso()==null || s.getTokenacceso().isEmpty()){
+            res.setError(true);
+            res.setMensaje("No se puede generar el token de acceso...");
+        }else{
+            res.setError(false);
+            res.setMensaje("Bienvenido: "+s.getEmail());
+            res.setSesiontoken(s);
+        }
+        //---------------------------------------------------//
+        return res;
+    }
     
+    @POST
+    @Path("valiartoken")
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Respuesta validarToken(
+            @FormParam("token") String token
+    ){
+        Respuesta res = new Respuesta();
+        //--------VALIDAR PARAMETROS DE ENTRADA--------------//
+        if(token==null || token.trim().isEmpty()){
+            res.setError(true);
+            res.setMensaje("El token es un dato requerido...");
+            return res;
+        }
+        //--------------VALIDAR TOKEN DE JWT-----------------//
+        res = AutorizacionTokenJWT.validarToken(token);
+        //---------------------------------------------------//
+        return res;
+    }
     
 }

@@ -14,7 +14,7 @@ import java.util.List;
 public class Respuesta {
     private boolean error;
     private String mensaje;
-    private User empleado;
+    private User user;
     private List<User> lista;
     private SesionToken sesiontoken;
     
@@ -44,11 +44,11 @@ public class Respuesta {
     }
     
     public User getEmpleado() {
-        return empleado;
+        return user;
     }
     
     public void setEmpleado(User empleado) {
-        this.empleado = empleado;
+        this.user = empleado;
     }
     
     public List<User> getLista() {
