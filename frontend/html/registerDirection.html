@@ -5,59 +5,55 @@
         <meta charset="UTF-8">
         <title> </title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet"  href="../styles/registerInversor.css">
+        <link rel="stylesheet"  href="../styles/registerDirection.css">
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-        <script type="text/javascript"  src="../js/registerInversor.js"></script>  
+        <script type="text/javascript"  src="../js/registerDirection.js"></script>  
     </head>
     <body>
         <nav></nav>
         <div class="row">
             <div class="col-11">
-                <h1 class="text-left title"> Datos personales</h1>
+                <h1 class="text-left title"> Datos domiciliarios</h1>
                 <form class="user-form">
                     <div class="form-outline mb-4">
-                        <label class="form-label" for="txName">Nombre</label>
-                        <input type="text" id="txName" class="form-control" />
-                    </div>
-                    <div class="form-outline mb-4">
-                        <label class="form-label" for="txLastFatherName">Apellido Paterno</label>
-                        <input type="text" id="txLastFatherName" class="form-control" />
-                    </div>
-                    <div class="form-outline mb-4">
-                        <label class="form-label" for="txLastMotherName">Apellido Materno</label>
-                        <input type="text" id="txLastMotherName" class="form-control" />
-                    </div>
-                    <div class="form-outline mb-4">
-                        <label class="form-label" for="txRFC">RFC</label>
-                        <input type="text" id="txRFC" class="form-control" />
-                    </div>
-                    <div class="form-outline mb-4">
-                        <label class="form-label" for="txDate">Fecha de nacimiento</label>
-                        <input type="date" id="txDate" class="form-control" />
-                    </div>
-                    <div class="form-outline mb-4">
-                        <label class="form-label" for="cbGradeAcademic">Grado acádemico: </label> 
+                        <label class="form-label" for="cbState">Estado: </label> 
                         <br>
-                        <select class="round "  id="cbGradeAcademic" aria-label="Default select example">
-                            <option selected value="primaria">Primaria</option>
-                            <option selected value="secundaria">Secundaria</option>
-                            <option selected value="bachiller">Bachillerato</option>
-                            <option selected value="tecnica">Carrera técnica</option>
-                            <option selected value="universidad">Universidad</option>
-                            <option selected value="maestria">Maestría</option>
-                            <option selected value="doctorado">Doctorado</option>
+                        <select class="round "  id="cbState" aria-label="Default select example">
+                           
                         </select>
                     </div>
                     <div class="form-outline mb-4">
-                        <label class="form-label" for="txWork">Profesión</label>
-                        <input type="text" id="txWork" class="form-control" />
+                        <label class="form-label" for="cbCity">Municipio: </label> 
+                        <br>
+                        <select class="round "  id="cbCity" aria-label="Default select example">
+                        </select>
+                    </div>
+                    <div class="form-outline mb-4">
+                        <label class="form-label" for="cbPostalCode">Código Postal: </label> 
+                        <br>
+                        <select class="round "  id="cbPostalCode" aria-label="Default select example">
+                        </select>
+                    </div>
+                    <div class="form-outline mb-4">
+                        <label class="form-label" for="cbColony">Colonia: </label> 
+                        <br>
+                        <select class="round "  id="cbColony" aria-label="Default select example">
+                        </select>
+                    </div>
+                    <div class="form-outline mb-4">
+                        <label class="form-label" for="txStreet">Calle</label>
+                        <input type="text" id="txStreet" class="form-control" />
+                    </div>
+                    <div class="form-outline mb-4">
+                        <label class="form-label" for="txIntStreet">Número de calle:</label>
+                        <input type="int" id="txIntStreet" class="form-control" />
                     </div>
                     <div class="form-outline mb-4">
                         <div class="row">
                         <div class="col-6">
-                            <button type="button" class="col-5 btn btn-secondary" >Cancelar</button>
+                            <button type="button" class="col-5 btn btn-secondary" >Regresar</button>
                         </div>
                         <button class="cssbuttons-io-button"> Siguiente
                             <div class="icon">

@@ -10,7 +10,7 @@
 .col-4{
     padding-left: 5%;
     padding-right: 5%;
-    margin-top: 5%;
+    margin-top: 2%;
     margin-left: 35%;
     padding-bottom: 5%;
     background-color: white;
@@ -20,7 +20,24 @@
 }
 
 button{
-    width: 40%;
+
+        color: white;
+        font-family: inherit;
+        padding: 0.35em;
+        padding-left: 1.2em;
+        font-size: 17px;
+        font-weight: 500;
+        border-radius: 0.9em;
+        border: none;
+        letter-spacing: 0.05em;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        position: relative;
+        height: 2.8em;
+        width: 10em;
+        padding-right: 2.0em;
+      
     
 }
 
