@@ -10,70 +10,49 @@ package pojos;
  */
 public class Direccion {
     private String calle;
-    private String codigoPostal;
-    private String colonia;
-    private String estado;
-    private String municipio;
-    private Integer numero;
+    private Integer numeroExterior;
+    private Integer numeroInterior;
+    private Integer idDatoSepomex;
     
     public Direccion() {
         
     }
-    
-    public Direccion(String calle, String codigoPostal, String colonia, String estado, String municipio, Integer numero) {
+
+    public Direccion(String calle, Integer numeroExterior, Integer numeroInterior) {
         this.calle = calle;
-        this.codigoPostal = codigoPostal;
-        this.colonia = colonia;
-        this.estado = estado;
-        this.municipio = municipio;
-        this.numero = numero;
+        this.numeroExterior = numeroExterior;
+        this.numeroInterior = numeroInterior;
     }
 
     public String getCalle() {
         return calle;
     }
 
+    public Integer getNumeroExterior() {
+        return numeroExterior;
+    }
+
+    public Integer getNumeroInterior() {
+        return numeroInterior;
+    }
+
+    public Integer getIdDatoSepomex() {
+        return idDatoSepomex;
+    }
+
     public void setCalle(String calle) {
         this.calle = calle;
     }
 
-    public String getCodigoPostal() {
-        return codigoPostal;
+    public void setNumeroExterior(Integer numeroExterior) {
+        this.numeroExterior = numeroExterior;
     }
 
-    public void setCodigoPostal(String codigoPostal) {
-        this.codigoPostal = codigoPostal;
+    public void setNumeroInterior(Integer numeroInterior) {
+        this.numeroInterior = numeroInterior;
     }
 
-    public String getColonia() {
-        return colonia;
-    }
-
-    public void setColonia(String colonia) {
-        this.colonia = colonia;
-    }
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
-    public String getMunicipio() {
-        return municipio;
-    }
-
-    public void setMunicipio(String municipio) {
-        this.municipio = municipio;
-    }
-
-    public Integer getNumero() {
-        return numero;
-    }
-
-    public void setNumero(Integer numero) {
-        this.numero = numero;
+    public void setIdDatoSepomex(Integer idDatoSepomex) {
+        this.idDatoSepomex = idDatoSepomex;
     }
 }
