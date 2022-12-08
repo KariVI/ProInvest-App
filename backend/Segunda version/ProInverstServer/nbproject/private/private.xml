@@ -3,11 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/carlosperezperez/Documents/GitHub/ProInvest-App/backend/Segunda%20version/ProInverstServer/src/java/seguridad/configuracionJWT.properties</file>
+            <file>file:/Users/carlosperezperez/Documents/GitHub/ProInvest-App/backend/Segunda%20version/ProInverstServer/src/java/pojos/Direccion.java</file>
+            <file>file:/Users/carlosperezperez/Documents/GitHub/ProInvest-App/backend/Segunda%20version/ProInverstServer/src/java/basic/InversionistaWS.java</file>
+            <file>file:/Users/carlosperezperez/Documents/GitHub/ProInvest-App/backend/Segunda%20version/ProInverstServer/src/java/dao/DireccionDAO.java</file>
+            <file>file:/Users/carlosperezperez/Documents/GitHub/ProInvest-App/backend/Segunda%20version/ProInverstServer/src/java/basic/ApplicationConfig.java</file>
             <file>file:/Users/carlosperezperez/Documents/GitHub/ProInvest-App/backend/Segunda%20version/ProInverstServer/src/java/basic/AccessWS.java</file>
-            <file>file:/Users/carlosperezperez/Documents/GitHub/ProInvest-App/backend/Segunda%20version/ProInverstServer/src/java/seguridad/frontend_credenciales.properties</file>
-            <file>file:/Users/carlosperezperez/Documents/GitHub/ProInvest-App/backend/Segunda%20version/ProInverstServer/src/java/dao/UserDAO.java</file>
-            <file>file:/Users/carlosperezperez/Documents/GitHub/ProInvest-App/backend/Segunda%20version/ProInverstServer/src/java/pojos/User.java</file>
         </group>
     </open-files>
 </project-private>
