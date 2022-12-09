@@ -12,6 +12,14 @@ body{
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
+input[type="text"]{
+  max-width: 70%;
+}
+
+input[type="date"]{
+  max-width: 70%;
+}
+
 .col-11{
     padding-left: 5%;
     padding-right: 5%;
@@ -22,7 +30,7 @@ body{
     padding-bottom: 5%;
     background-color: white;
     border-radius: 28px;
-    width: 95%;
+    width: 80%;
 }
 
 .row{

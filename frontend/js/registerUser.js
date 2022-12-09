@@ -1,11 +1,4 @@
 
-
-
-
-
-
-
-
 function validateForm(){
     return validateEmail();
 }
@@ -25,9 +18,7 @@ function enviarFormulario(){
 }
 
 
-function isEmpty(value){
-    return !!(value.isEmpty() || value.trim()=="");
-}
+
 
 function validateEmail(){
     let memail = document.getElementById("memail");
