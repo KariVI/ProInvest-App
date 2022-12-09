@@ -44,11 +44,11 @@ INSERT INTO usuario (correo, contrasena) VALUES
 -- Insersión datos para `Inversionista`
 -- ----------------------------
 INSERT INTO inversionista (apellidoMaterno, apellidoPaterno, celular, direccionIp, empresa, fechaNacimiento, nombre, rfc, idGradoAcademico, idUsuario, idProfesion) VALUES
-('Vargas', 'Ramón', '2287659873', '192.158.1.38', 'UV', '28-01-1988', 'José', 'RAVO280188HOCRJ', 5, 1, 1),
-('Mateos', 'Dominguez', '2287657853', '192.158.1.38', 'Seguros SA de CV', '13-04-1990', 'Laura', 'DOML130490MOCRJ', 5, 2, 2),
-('Ramirez', 'Anota', '9873789393', '192.158.1.38', 'IBM', '03-05-1990', 'Armando', 'ANRA280188HOCRJ', 5, 3, 3),
-('Vargas', 'Jimenez', '8763782839', '192.158.1.38', 'SoftEvolution', '09-10-1988', 'Merari', 'JIVM280188HOCRJ', 6, 4, 4),
-('Vasquez', 'Velasquez', '3458920392', '192.158.1.38', 'Tecno', '08-12-1991', 'Pedro', 'VEVP280188HOCRJ', 5, 5, 5);
+('Vargas', 'Ramón', '2287659873', '192.158.1.38', 'UV', '1988-01-28', 'José', 'RAVO280188HOCRJ', 5, 1, 1),
+('Mateos', 'Dominguez', '2287657853', '192.158.1.38', 'Seguros SA de CV', '1990-04-13', 'Laura', 'DOML130490MOCRJ', 5, 2, 2),
+('Ramirez', 'Anota', '9873789393', '192.158.1.38', 'IBM', '1990-05-03', 'Armando', 'ANRA280188HOCRJ', 5, 3, 3),
+('Vargas', 'Jimenez', '8763782839', '192.158.1.38', 'SoftEvolution', '1988-10-09', 'Merari', 'JIVM280188HOCRJ', 6, 4, 4),
+('Vasquez', 'Velasquez', '3458920392', '192.158.1.38', 'Tecno', '1991-12-08', 'Pedro', 'VEVP280188HOCRJ', 5, 5, 5);
 
 -- ----------------------------
 -- Insersión datos para `banco`
@@ -64,7 +64,8 @@ INSERT INTO banco (nombre) VALUES
 -- ----------------------------
 -- Insersión datos para `origenFondos`
 -- ----------------------------
-
+INSERT INTO origenFondo (origen) VALUES
+('Ahorro');
 
 -- ----------------------------
 -- Insersión datos para `informacionFinanciera`
