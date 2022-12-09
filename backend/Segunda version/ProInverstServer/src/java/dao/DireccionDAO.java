@@ -5,8 +5,11 @@
 package dao;
 
 import com.github.javafaker.Faker;
+import static dao.DatoSepomexDAO.abrirConexionBD;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Locale;
@@ -48,5 +51,80 @@ public class DireccionDAO {
             ex.printStackTrace();
         }
         return d;
+    }
+    
+    public static Direccion getByIdDireccion(int idDireccion){
+        Direccion direccion = null;
+        Connection connection = abrirConexionBD();
+        if(connection != null){
+            try{
+                String consulta = "SELECT * FROM direccion WHERE idDireccion = ?";
+                PreparedStatement ps = connection.prepareStatement(consulta);
+                ps.setInt(1, idDireccion);
+                ResultSet rs = ps.executeQuery();
+                while(rs.next()){
+                    direccion.setIdDireccion(idDireccion);
+                    direccion.setCalle(rs.getString("calle"));
+                    direccion.setNumeroExterior(rs.getInt("numeroExterior"));
+                    direccion.setNumeroInterior(rs.getInt("numeroInterior"));
+                    direccion.setIdDatoSepomex(rs.getInt("idDatosSepomex"));
+                    direccion.setIdInversionista(rs.getInt("idInversionista"));
+                }
+                connection.close();
+            }catch(SQLException s){
+                System.out.println(s.getMessage());
+                s.printStackTrace();
+            }
+        }
+        return direccion;
+    }
+    
+    public static Direccion getByIdInversionista(int idInversionista){
+        Direccion direccion = null;
+        Connection connection = abrirConexionBD();
+        if(connection != null){
+            try{
+                String consulta = "SELECT * FROM direccion WHERE idInversionista = ?";
+                PreparedStatement ps = connection.prepareStatement(consulta);
+                ps.setInt(1, idInversionista);
+                ResultSet rs = ps.executeQuery();
+                while(rs.next()){
+                    direccion.setIdInversionista(idInversionista);
+                    direccion.setCalle(rs.getString("calle"));
+                    direccion.setNumeroExterior(rs.getInt("numeroExterior"));
+                    direccion.setNumeroInterior(rs.getInt("numeroInterior"));
+                    direccion.setIdDatoSepomex(rs.getInt("idDatosSepomex"));
+                    direccion.setIdDireccion(rs.getInt("idDireccion"));
+                }
+                connection.close();
+            }catch(SQLException s){
+                System.out.println(s.getMessage());
+                s.printStackTrace();
+            }
+        }
+        return direccion;
+    }
+    
+    public boolean saveDireccion(Direccion direccion){
+        boolean saved = false;
+        Connection connection = abrirConexionBD();
+        if(connection != null){
+            try{
+                String consulta = "INSERT INTO direccion (calle, numeroExterior, numeroInterior, idDatosSepomex, idInversionista)"
+                                + "VALUES (?, ?, ?, ?, ?)";
+                PreparedStatement ps = connection.prepareStatement(consulta);
+                ps.setString(1, direccion.getCalle());
+                ps.setInt(2, direccion.getNumeroExterior());
+                ps.setInt(3, direccion.getNumeroInterior());
+                ps.setInt(4, direccion.getIdDatoSepomex());
+                ps.setInt(5, direccion.getIdInversionista());
+                saved = true;
+                connection.close();
+            }catch(SQLException s){
+                System.out.println(s.getMessage());
+                s.printStackTrace();
+            }
+        }
+        return saved;
     }
 }
