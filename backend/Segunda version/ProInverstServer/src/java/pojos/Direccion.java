@@ -9,10 +9,12 @@ package pojos;
  * @author carlosperezperez
  */
 public class Direccion {
+    private Integer idDireccion;
     private String calle;
     private Integer numeroExterior;
     private Integer numeroInterior;
     private Integer idDatoSepomex;
+    private Integer idInversionista;
     
     public Direccion() {
         
@@ -55,4 +57,21 @@ public class Direccion {
     public void setIdDatoSepomex(Integer idDatoSepomex) {
         this.idDatoSepomex = idDatoSepomex;
     }
+
+    public Integer getIdDireccion() {
+        return idDireccion;
+    }
+
+    public Integer getIdInversionista() {
+        return idInversionista;
+    }
+
+    public void setIdDireccion(Integer idDireccion) {
+        this.idDireccion = idDireccion;
+    }
+
+    public void setIdInversionista(Integer idInversionista) {
+        this.idInversionista = idInversionista;
+    }
+    
 }
