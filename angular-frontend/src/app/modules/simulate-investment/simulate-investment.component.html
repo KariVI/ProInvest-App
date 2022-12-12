@@ -1,0 +1,31 @@
+<div class="principal">
+    <div class="row">
+        <div class="col-11">
+                <form class="row">
+                <div class="col-4">
+                    <div class="form-outline mb-2">
+                        <label class="form-label" for="txMoney">Monto a invertir*</label>
+                        <input type="number" id="txMoney" class="form-control" required/>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="form-outline mb-2">
+                        <label class="form-label" for="txPlazo">Plazo*</label>
+                        <input type="number" id="txMoney" class="form-control" required/>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <button> Simular inversión</button>
+                </div>
+            </form>
+            <div class="row">
+                <h4>Por fines ilustrativos de la simulación de una inversión se usará una tasa de interés de 0.05</h4>
+            </div>
+            <div class="row div-chart">
+                <div style="display: block; width: 400px">
+                    <canvas id="canvas" height="320">{{ chart }}</canvas>
+                  </div>
+               </div>
+            </div> 
+    </div>
+</div>
