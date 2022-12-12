@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChartsModule } from 'ng2-charts';
 import { RegisterUserModule } from './modules/register-user/register-user.module';
+import { RegisterInversorModule } from './modules/register-inversor/register-inversor.module';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { RegisterUserModule } from './modules/register-user/register-user.module
   ],
   imports: [
     RegisterUserModule,
+    RegisterInversorModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

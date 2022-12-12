@@ -10,3 +10,5 @@ backend/ProInverstServer/nbproject/project.xml
 backend/ProInverstServer/src/conf/MANIFEST.MF
 backend/ProInverstServer/web/index.html
 backend/ProInverstServer/web/META-INF/context.xml
+*.class
+*.class
