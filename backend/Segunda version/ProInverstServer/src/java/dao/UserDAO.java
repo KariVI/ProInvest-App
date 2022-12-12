@@ -75,17 +75,4 @@ public class UserDAO {
         }
         return login;
     }
-   
-    public static User login(String email, String contrasena) {
-        Date date = new Date();
-        User u = null;
-        //--------------------------//
-        try {
-            
-        }catch(Exception ex){
-            ex.printStackTrace();
-        }
-        //--------------------------//
-        return u;
-    }
 }
