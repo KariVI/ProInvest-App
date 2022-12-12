@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RegisterUserComponent } from './register-user.component';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -9,7 +9,14 @@ import { RegisterUserComponent } from './register-user.component';
     RegisterUserComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule, ReactiveFormsModule
+  ],
+  exports: [
+    CommonModule,
+  
   ]
 })
-export class RegisterUserModule { }
+export class RegisterUserModule {
+   
+ }

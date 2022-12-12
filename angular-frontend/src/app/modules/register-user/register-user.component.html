@@ -4,35 +4,51 @@
         <div class="text-center">
             <img src="assets/images/userIcon.png" class="img-fluid"> 
         </div>
-        <form class="user-form">
+        <form class="user-form" [formGroup]="userForm" >
             <div class="form-outline mb-4">
                 <label class="form-label" for="txEmail">Correo electronico *</label>
-                <input type="email" id="txEmail" class="form-control" value=""
-                 required 
-                 
-                 title="El correo solo puede contener letras, números, guiones, punto y @"   />
-                
+                <input type="email" id="txEmail" formControlName="email" class="form-control" required>
+                <div class="padding-tl">
+                    <div *ngFor="let validation of validationMessages.email">
+                      <span
+                        class="text-danger"
+                        *ngIf="userForm.get('email')!.hasError(validation.type)"
+                      >
+                        {{ validation.message }}
+                      </span>
+                    </div>     
+                </div>            
             </div>
             <div class="form-outline mb-4">
-                <label class="form-label" for="txPassword">Contraseña*</label>
+                <label class="form-label" for="txPassword" >Contraseña*</label>
                 <input type="password" id="txPassword"
                  class="form-control" 
-                pattern="/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/"
-                title="La contraseña debe poseer una letra mayuscula, minúsculan número y un mínimo de 8 letras"
+                 formControlName="password"
                  required />
-                <p id="password" class="warning"></p>
+                 <div class="padding-tl">
+                    <div *ngFor="let validation of validationMessages.password">
+                      <span
+                        class="text-danger"
+                        *ngIf="userForm.get('password')!.hasError(validation.type)"
+                      >
+                        {{ validation.message }}
+                      </span>
+                    </div>
+                </div>
             </div>
             <div class="form-outline mb-4">
                 <label class="form-label" for="txPasswordConfirm">Confirmar contraseña*</label>
                 <input type="password" 
-                value=""
+                formControlName="passwordConfirm"
                 id="txPasswordConfirm" class="form-control" required 
                 />
                 
-                <p id="passwordconfirm" class="warning"></p>
+                <div>
+                  <span *ngIf="validatePasswords()" class="text-danger"> Las contraseñas no coinciden </span>
+                </div>
             </div>
-              <div class="row" style="margin-left: 0.8%;">
-                <button type="button" class="col-5 btn btn-success" onclick="enviarFormulario()">Registrar</button>
+              <div class="row" style="margin-right: 0;">
+                <button type="button" class="col-5 btn btn-success" onclick="enviarFormulario() " [disabled]=" !evaluateAccount() ">Registrar</button>
                 <button type="button" class="col-5 btn btn-secondary" onclick="previousPage()" >Cancelar</button>
                 
             </div>

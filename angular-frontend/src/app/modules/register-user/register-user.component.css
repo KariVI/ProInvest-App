@@ -11,12 +11,12 @@
     padding-left: 5% !important;
     padding-right: 7%!important;
     margin-top: 1%!important;
-    margin-left: 35%!important;
-    padding-bottom: 2%!important;
+    margin-left: 40%!important;
+    padding-bottom: 6%!important;
     background-color: white!important;
     border-radius: 40px;
 
-    width: 70%!important;
+    width: 60%!important;
 }
 
 button{
@@ -49,8 +49,7 @@ button{
 .principal{
     display:flex;
     flex-direction: column;
-    width:100vw;
-    height:100vh; 
+    
     background: #7F7FD5;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
