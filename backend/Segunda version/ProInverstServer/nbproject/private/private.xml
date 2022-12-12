@@ -3,13 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/david/Documents/Universidad%20Veracruzana%20IS/Septimo%20semestre/Desarrollo%20de%20sistemas%20web/ProInvest-App/backend/Segunda%20version/ProInverstServer/src/java/dao/DatoSepomexDAO.java</file>
-            <file>file:/C:/Users/david/Documents/Universidad%20Veracruzana%20IS/Septimo%20semestre/Desarrollo%20de%20sistemas%20web/ProInvest-App/backend/Segunda%20version/ProInverstServer/src/java/dao/DireccionDAO.java</file>
-            <file>file:/C:/Users/david/Documents/Universidad%20Veracruzana%20IS/Septimo%20semestre/Desarrollo%20de%20sistemas%20web/ProInvest-App/backend/Segunda%20version/ProInverstServer/src/java/dao/InformacionFinancieraDAO.java</file>
-            <file>file:/C:/Users/david/Documents/Universidad%20Veracruzana%20IS/Septimo%20semestre/Desarrollo%20de%20sistemas%20web/ProInvest-App/backend/Segunda%20version/ProInverstServer/src/java/pojos/Direccion.java</file>
-            <file>file:/C:/Users/david/Documents/Universidad%20Veracruzana%20IS/Septimo%20semestre/Desarrollo%20de%20sistemas%20web/ProInvest-App/backend/Segunda%20version/ProInverstServer/src/java/dao/OrigenFondoDAO.java</file>
-            <file>file:/C:/Users/david/Documents/Universidad%20Veracruzana%20IS/Septimo%20semestre/Desarrollo%20de%20sistemas%20web/ProInvest-App/backend/Segunda%20version/ProInverstServer/src/java/dao/BancoDAO.java</file>
-            <file>file:/C:/Users/david/Documents/Universidad%20Veracruzana%20IS/Septimo%20semestre/Desarrollo%20de%20sistemas%20web/ProInvest-App/backend/Segunda%20version/ProInverstServer/src/java/pojos/InformacionFinanciera.java</file>
+            <file>file:/Users/carlosperezperez/Documents/GitHub/ProInvest-App/backend/Segunda%20version/ProInverstServer/src/java/pojos/Mensaje.java</file>
+            <file>file:/Users/carlosperezperez/Documents/GitHub/ProInvest-App/backend/Segunda%20version/ProInverstServer/src/java/basic/AccessWS.java</file>
+            <file>file:/Users/carlosperezperez/Documents/GitHub/ProInvest-App/backend/Segunda%20version/ProInverstServer/src/java/pojos/Respuesta.java</file>
+            <file>file:/Users/carlosperezperez/Documents/GitHub/ProInvest-App/backend/Segunda%20version/ProInverstServer/src/java/dao/UserDAO.java</file>
+            <file>file:/Users/carlosperezperez/Documents/GitHub/ProInvest-App/backend/Segunda%20version/ProInverstServer/src/java/pojos/Inversion.java</file>
         </group>
     </open-files>
 </project-private>
