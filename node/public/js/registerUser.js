@@ -3,6 +3,12 @@ function validateForm(){
     return validateEmail();
 }
 
+function previousPage(){
+  
+    let url ="http://localhost:5000";
+    window.open(url);
+}
+
 function enviarFormulario(){    
     let mpasswordConfirm = document.getElementById("passwordconfirm");
     if(validateEmail() && validatePassword()){

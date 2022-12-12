@@ -1,9 +1,8 @@
 
 
-export default class Validation {
+export class Validation {
     
-    constructor() {
-    }
+    constructor() {}
     
      isNotEmpty(nomForm){
         return nomForm == null || nomForm == "" || nomForm.length == 0  || /^\s+$/.test(nomForm) || !isNaN(nomForm);
