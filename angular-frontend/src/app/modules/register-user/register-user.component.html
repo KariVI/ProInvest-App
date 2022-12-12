@@ -44,7 +44,7 @@
                 />
                 
                 <div>
-                  <span *ngIf="validatePasswords()" class="text-danger"> Las contraseñas no coinciden </span>
+                  <span *ngIf="!validatePasswords()" class="text-danger"> Las contraseñas no coinciden </span>
                 </div>
             </div>
               <div class="row" style="margin-right: 0;">

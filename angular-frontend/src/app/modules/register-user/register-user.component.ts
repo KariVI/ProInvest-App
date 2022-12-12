@@ -51,6 +51,7 @@ export class RegisterUserComponent implements OnInit {
     let value: boolean = false;
     let password = this.userForm.get('password')?.value.toString()
     let passwordConfirm = this.userForm.get('passwordConfirm')?.value.toString()
+    console.log(password == passwordConfirm);
 
     if (password == passwordConfirm) {
       value = true;
