@@ -118,6 +118,7 @@ public class DireccionDAO {
                 ps.setInt(3, direccion.getNumeroInterior());
                 ps.setInt(4, direccion.getIdDatoSepomex());
                 ps.setInt(5, direccion.getIdInversionista());
+                ps.executeUpdate();
                 saved = true;
                 connection.close();
             }catch(SQLException s){
