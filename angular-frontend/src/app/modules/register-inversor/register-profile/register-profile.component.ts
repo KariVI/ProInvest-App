@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { IInversor } from '../../model/interfaces/IInversor';
 
 @Component({
   selector: 'app-register-profile',
@@ -9,9 +10,11 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 export class RegisterProfileComponent implements OnInit {
 
   constructor(private fb: FormBuilder) { }
-
+  @Input() inversor!: IInversor;
   @Input() showProfile:boolean=false;
   @Output() previousPhase = new EventEmitter<void>();
+  @Output() nextPhase = new EventEmitter<void>();
+
   inversorGroup: FormGroup = this.fb.group({
     names: new FormControl('', Validators.compose(
       [Validators.required,
@@ -50,7 +53,7 @@ export class RegisterProfileComponent implements OnInit {
       work: [
               { type: 'pattern', message: 'La profesión es inválida'  }],
       grade: [
-            { type: 'pattern', message: 'El grado académico es inválido'  }]
+            { type: 'required', message: 'El grado académico es inválido'  }]
       
       }
 
@@ -63,6 +66,18 @@ export class RegisterProfileComponent implements OnInit {
         return result;
       }
 
+      
+      createInversor(){
+        this.inversor.names = this.inversorGroup.get('names')?.value.toString();
+        this.inversor.lastFatherName = this.inversorGroup.get('lastFatherName')?.value.toString();
+        this.inversor.lastMotherName = this.inversorGroup.get('lastMotherName')?.value.toString();
+        this.inversor.rfc = this.inversorGroup.get('rfc')?.value.toString();
+        this.inversor.bornDate = this.inversorGroup.get('date')?.value.toString();
+        this.inversor.work = this.inversorGroup.get('work')?.value.toString();
+        this.inversor.gradeAcademic = this.inversorGroup.get('grade')?.value.toString();
+        this.nextPhase.emit();
+      }
+      
 
   ngOnInit(): void {
   }

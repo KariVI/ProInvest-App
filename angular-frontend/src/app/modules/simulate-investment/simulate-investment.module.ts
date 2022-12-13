@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule} from '@angular/common';
 import { SimulateInvestmentComponent } from './simulate-investment.component';
-import { BargraphComponent } from '../bargraph/bargraph.component';
 import { ChartsModule } from 'ng2-charts';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
-    SimulateInvestmentComponent,
-  BargraphComponent ],
+    SimulateInvestmentComponent ],
   imports: [
     CommonModule,
-    
+    FormsModule, ReactiveFormsModule
   ],
   providers:[ChartsModule]
 })

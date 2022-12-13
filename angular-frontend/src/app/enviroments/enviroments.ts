@@ -1,5 +1,5 @@
 export const environment = {
     production: false,
     baseUrl: "",
-    userRegister: "http:"
+    baseClient: "http://localhost:4200/"
   };

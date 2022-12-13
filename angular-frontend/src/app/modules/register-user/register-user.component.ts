@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { environment } from '../../enviroments/enviroments'
+import { IDirectionInversor } from '../model/interfaces/IDirection';
+import { IInfoFinancial } from '../model/interfaces/IInfoFinancial';
+import { IUser } from '../model/interfaces/IUser';
 
 @Component({
   selector: 'app-register-user',
@@ -9,6 +13,9 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 export class RegisterUserComponent implements OnInit {
 
   constructor(private fb: FormBuilder) { }
+  user!: IUser;
+  direction!:IDirectionInversor;
+  infoFinancial!: IInfoFinancial;
   userForm:FormGroup= this.fb.group({
     email: new FormControl('', Validators.compose([
       Validators.required,
@@ -68,5 +75,15 @@ export class RegisterUserComponent implements OnInit {
     }
 
     return result;
+  }
+
+  previousPage(): string{
+    return environment.baseClient;
+  }
+
+  createInversor(){
+    this.user.email= this.userForm.get('email')?.value.toString();
+    this.user.password = this.userForm.get('password')?.value.toString();
+
   }
 }

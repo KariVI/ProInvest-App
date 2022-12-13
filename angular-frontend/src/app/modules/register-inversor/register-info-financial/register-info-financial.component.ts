@@ -12,7 +12,6 @@ export class RegisterInfoFinancialComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
   @Input() showInfoFinance:boolean=false;
   @Output() previousPhase = new EventEmitter<void>();
   infoFinanceGroup:FormGroup= this.fb.group({
@@ -39,19 +38,22 @@ export class RegisterInfoFinancialComponent implements OnInit {
 
   public validationMessages = {
     bank: [
-      { type: 'bank', message: 'El banco no esta seleccionado.' }
+      { type: 'required', message: 'El banco no esta seleccionado.' }
     ],
     clabe: [
-      { type: 'clabe', message: 'La CLABE no es válida.' }
+      { type: 'required', message: 'La CLABE no es válida.' }
     ],
     savings: [
-      { type: 'street', message: 'El origen de los fondos no esta seleccionado' }
+      { type: 'required', message: 'El origen de los fondos no esta seleccionado' }
     ],
     accountBank: [
-      { type: 'state', message: 'La cuenta bancaria no es válida.' }
+      { type: 'required', message: 'La cuenta bancaria no es válida.' }
     ]
    
   }
 
+  
+
+  
   
 }
