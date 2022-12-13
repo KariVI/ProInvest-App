@@ -16,6 +16,13 @@ public class DatoSepomex {
         this.colonia = colonia;
         this.cp = cp;
     }
+    
+    public DatoSepomex(String estado, String municipio, String colonia, Integer cp){
+        this.estado = estado;
+        this.municipio = municipio;
+        this.colonia = colonia;
+        this.cp = cp;
+    }
 
     public DatoSepomex() {
        

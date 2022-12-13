@@ -10,6 +10,7 @@ import java.util.List;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -40,6 +41,27 @@ public class DatoSepomexWS {
         return lista;
     }
     
+    @GET
+    @Path("getIdByDatosSepomex")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Integer getIdByDatosSepomex(
+            @FormParam("estado") String estado,
+            @FormParam("municipio") String municipio,
+            @FormParam("colonia") String colonia,
+            @FormParam("cp") Integer cp
+    ){
+        DatoSepomex dato = new DatoSepomex(estado, municipio, colonia, cp);
+        Integer idDatoSepomex = DatoSepomexDAO.getIdByDatosSepomex(dato);
+        return idDatoSepomex;
+    }
     
-    
+    @GET
+    @Path("getById/{idDatoSepomex}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public DatoSepomex getByIdDato(
+           @PathParam("idDatoSepomex") Integer idDatoSepomex
+    ){
+        DatoSepomex dato = DatoSepomexDAO.getDatoById(idDatoSepomex);
+        return dato;
+    }
 }
