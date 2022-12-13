@@ -56,7 +56,7 @@ public class DatoSepomexWS {
     }
     
     @GET
-    @Path("getById/{idDatoSepomex}")
+    @Path("getByIdDato/{idDatoSepomex}")
     @Produces(MediaType.APPLICATION_JSON)
     public DatoSepomex getByIdDato(
            @PathParam("idDatoSepomex") Integer idDatoSepomex

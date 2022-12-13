@@ -32,7 +32,7 @@ public class OrigenFondoWS {
     }
 
     @GET
-    @Path("all")
+    @Path("allOrigenFondo")
     @Produces(MediaType.APPLICATION_JSON)
     public ArrayList<OrigenFondo> getAllOrigenFondo(){
         ArrayList<OrigenFondo> lista = OrigenFondoDAO.getAllOrigenFondo();
