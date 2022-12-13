@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -10,6 +10,8 @@ export class RegisterProfileComponent implements OnInit {
 
   constructor(private fb: FormBuilder) { }
 
+  @Input() showProfile:boolean=false;
+  @Output() previousPhase = new EventEmitter<void>();
   inversorGroup: FormGroup = this.fb.group({
     names: new FormControl('', Validators.compose(
       [Validators.required,
@@ -28,7 +30,9 @@ export class RegisterProfileComponent implements OnInit {
             Validators.pattern('/^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/')])),
     work: new FormControl('', Validators.compose(
               [Validators.required,
-              Validators.pattern('a-zA-ZñÑá-úÁ-Ú')]))
+              Validators.pattern('a-zA-ZñÑá-úÁ-Ú')])),
+    grade: new FormControl('', Validators.compose(
+      [Validators.required]))
     })
 
     public validationMessages = {
@@ -44,7 +48,9 @@ export class RegisterProfileComponent implements OnInit {
       date: [
             { type: 'pattern', message: 'La fecha de nacimiento es invalida'  }],
       work: [
-              { type: 'pattern', message: 'La profesión es inválida'  }]
+              { type: 'pattern', message: 'La profesión es inválida'  }],
+      grade: [
+            { type: 'pattern', message: 'El grado académico es inválido'  }]
       
       }
 

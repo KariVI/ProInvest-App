@@ -1,3 +1,17 @@
 <div class="principal">
-<app-register-profile></app-register-profile>
+<app-register-profile *ngIf="showProfile"
+    [showProfile] = "showProfile"
+    (previousPhase)="previousSection()"
+></app-register-profile>
+<app-register-direction *ngIf="showDirection"
+    [showDirection]="showDirection"
+    (previousPhase)="previousSection()"
+></app-register-direction>
+
+<app-register-info-financial *ngIf="showInfoFinance"
+    [showInfoFinance]="showInfoFinance"
+    (previousPhase)="previousSection()"
+
+>
+</app-register-info-financial>
 </div>

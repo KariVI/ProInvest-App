@@ -75,7 +75,7 @@
                 <div class="form-outline mb-4">
                     <label class="form-label" for="cbGrade">Grado académico:* </label> 
                     <br>
-                    <select class="round "  id="cbGrade" aria-label="Default select example">
+                    <select class="round " formControlName="grade" id="cbGrade" aria-label="Default select example">
                         <option selected value="primaria">Primaria</option>
                         <option selected value="secundaria">Secundaria</option>
                         <option selected value="bachiller">Bachillerato</option>
@@ -84,6 +84,16 @@
                         <option selected value="maestria">Maestría</option>
                         <option selected value="doctorado">Doctorado</option>
                     </select>
+                    <div class="padding-tl">
+                        <div *ngFor="let validation of validationMessages.grade">
+                          <span
+                            class="text-danger"
+                            *ngIf="inversorGroup.get('grade')!.hasError(validation.type)"
+                          >
+                            {{ validation.message }}
+                          </span>
+                        </div>     
+                    </div>
                 </div>
   
                 <div class="form-outline mb-4">

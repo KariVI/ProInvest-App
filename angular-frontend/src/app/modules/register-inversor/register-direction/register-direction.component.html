@@ -1,47 +1,106 @@
-<div class="principal">
     <div class="row">
         <div class="col-11">
             <h1 class="text-left title"> Datos domiciliarios</h1>
-            <form class="user-form" >
+            <form class="user-form" [formGroup]="directionGroup">
                 <div class="form-outline mb-4">
                     <label class="form-label" for="cbState">Estado: </label> 
                     <br>
-                    <select class="round "  id="cbState" aria-label="Default select example">
-                       
+                    <select class="round "  formControlName="state" id="cbState" aria-label="Default select example">                     
                     </select>
+                    <div class="padding-tl">
+                        <div *ngFor="let validation of validationMessages.state">
+                          <span
+                            class="text-danger"
+                            *ngIf="directionGroup.get('state')!.hasError(validation.type)"
+                          >
+                            {{ validation.message }}
+                          </span>
+                        </div>
+                    </div>  
                 </div>
                 <div class="form-outline mb-4">
                     <label class="form-label" for="cbCity">Municipio: </label> 
                     <br>
-                    <select class="round "  id="cbCity" aria-label="Default select example">
+                    <select class="round " formControlName="city" id="cbCity" aria-label="Default select example">
                     </select>
+                    <div class="padding-tl">
+                        <div *ngFor="let validation of validationMessages.city">
+                          <span
+                            class="text-danger"
+                            *ngIf="directionGroup.get('city')!.hasError(validation.type)"
+                          >
+                            {{ validation.message }}
+                          </span>
+                        </div>  
+                    </div>
                 </div>
                 <div class="form-outline mb-4">
                     <label class="form-label" for="cbPostalCode">Código Postal: </label> 
                     <br>
-                    <select class="round "  id="cbPostalCode" aria-label="Default select example">
+                    <select class="round " formControlName="postalCode" id="cbPostalCode" aria-label="Default select example">
                     </select>
+                    <div class="padding-tl">
+                        <div *ngFor="let validation of validationMessages.postalCode">
+                          <span
+                            class="text-danger"
+                            *ngIf="directionGroup.get('postalCode')!.hasError(validation.type)"
+                          >
+                            {{ validation.message }}
+                          </span>
+                        </div>  
+                    </div>
                 </div>
                 <div class="form-outline mb-4">
                     <label class="form-label" for="cbColony">Colonia: </label> 
                     <br>
-                    <select class="round "  id="cbColony" aria-label="Default select example">
+                    <select class="round " formControlName="colony" id="cbColony" aria-label="Default select example">
+                     
                     </select>
+                    <div class="padding-tl">
+                        <div *ngFor="let validation of validationMessages.colony">
+                          <span
+                            class="text-danger"
+                            *ngIf="directionGroup.get('colony')!.hasError(validation.type)"
+                          >
+                            {{ validation.message }}
+                          </span>
+                        </div> 
+                    </div>
                 </div>
                 <div class="form-outline mb-4">
                     <label class="form-label" for="txStreet">Calle</label>
-                    <input type="text" id="txStreet" class="form-control" />
+                    <input type="text" id="txStreet" formControlName="street" class="form-control" />
+                    <div class="padding-tl">
+                        <div *ngFor="let validation of validationMessages.street">
+                          <span
+                            class="text-danger"
+                            *ngIf="directionGroup.get('street')!.hasError(validation.type)"
+                          >
+                            {{ validation.message }}
+                          </span>
+                        </div>  
+                    </div>
                 </div>
                 <div class="form-outline mb-4">
                     <label class="form-label" for="txIntStreet">Número de calle:</label>
-                    <input type="number" id="txIntStreet" class="form-control" />
+                    <input type="number" min="1" id="txIntStreet" formControlName="intStreet" class="form-control" />
+                    <div class="padding-tl">
+                        <div *ngFor="let validation of validationMessages.intStreet">
+                          <span
+                            class="text-danger"
+                            *ngIf="directionGroup.get('intStreet')!.hasError(validation.type)"
+                          >
+                            {{ validation.message }}
+                          </span>
+                        </div> 
+                    </div> 
                 </div>
                 <div class="form-outline mb-4">
                     <div class="row">
                     <div class="col-6">
-                        <button type="button" class="col-5 btn btn-secondary" >Regresar</button>
+                        <button type="button" class="col-5 btn btn-secondary"  >Regresar</button>
                     </div>
-                    <button class="cssbuttons-io-button"> Siguiente
+                    <button class="cssbuttons-io-button" [disabled]="evaluateForm()"> Siguiente
                         <div class="icon">
                           <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"></path><path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" fill="currentColor"></path></svg>
                         </div>
@@ -50,5 +109,10 @@
                 </div>
             </form>
         </div>
-    </div>
-</div>
+               <!----
+                
+               
+               
+              
+                -->
+  
