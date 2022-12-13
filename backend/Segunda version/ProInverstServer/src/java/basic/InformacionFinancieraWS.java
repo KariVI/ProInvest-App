@@ -32,7 +32,7 @@ public class InformacionFinancieraWS {
     }
 
     @POST
-    @Path("registrar")
+    @Path("registrarInformacion")
     @Produces(MediaType.APPLICATION_JSON)
     public Mensaje registrarInformacionFinanciera(   
             @FormParam("idBanco") Integer idBanco,
