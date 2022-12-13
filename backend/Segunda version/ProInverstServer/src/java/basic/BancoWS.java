@@ -31,7 +31,7 @@ public class BancoWS {
     }
 
     @GET
-    @Path("all")
+    @Path("getAllBancos")
     @Produces(MediaType.APPLICATION_JSON)
     public ArrayList<Banco> getAllBancos(){
         ArrayList<Banco> lista = BancoDAO.getAllBancos();

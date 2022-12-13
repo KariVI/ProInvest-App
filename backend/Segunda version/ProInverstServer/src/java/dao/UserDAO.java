@@ -75,4 +75,28 @@ public class UserDAO {
         }
         return login;
     }
+
+    public static boolean registrarUser(User u) {
+        boolean registro = false;
+        Connection con = abrirConexionBD();
+        SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date date = new Date(System.currentTimeMillis());
+        System.out.println(formatter.format(date));
+        if (con != null) {
+            try {
+                String consulta = "INSERT INTO usuario (correo, contrasena) VALUES (?, ?)";
+                PreparedStatement ps = con.prepareStatement(consulta);
+                ps.setString(1, u.getCorreo());
+                ps.setString(2, u.getContrasena());
+                int respIns = ps.executeUpdate();
+                registro = (respIns > 0);
+            } catch (SQLException s) {
+                System.out.println(s.getMessage());
+                s.printStackTrace();
+            }
+        }
+        return registro;
+    }
+    
+    
 }
