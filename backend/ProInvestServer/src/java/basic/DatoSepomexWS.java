@@ -26,6 +26,8 @@ public class DatoSepomexWS {
     public Response getByCp(
                 @PathParam("cp") Integer cp
     ){
+        
+        String holakari;
         List<DatoSepomex> lista = DatoSepomexDAO.getByCp(cp);    
         return Response.status(200).entity(lista).build();
     }
