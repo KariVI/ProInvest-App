@@ -10,6 +10,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.POST;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import pojos.DatoSepomex;
 
 @Path("datoSepomex")
@@ -22,11 +23,11 @@ public class DatoSepomexWS {
     @GET
     @Path("getByCp/{cp}")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<DatoSepomex> getByCp(
+    public Response getByCp(
                 @PathParam("cp") Integer cp
     ){
         List<DatoSepomex> lista = DatoSepomexDAO.getByCp(cp);    
-        return lista;
+        return Response.status(200).entity(lista).build();
     }
     
     @POST
@@ -52,5 +53,4 @@ public class DatoSepomexWS {
         DatoSepomex dato = DatoSepomexDAO.getDatoById(idDatoSepomex);
         return dato;
     }   
-
 }
