@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ThemeService } from 'ng2-charts';
+import { Observable } from 'rxjs';
 import { DataService } from 'src/app/services/data.service';
 import { IDirectionInversor } from '../../model/interfaces/IDirection';
 import { ICpData } from '../../model/interfaces/IPostalCode';
@@ -14,11 +15,12 @@ export class RegisterDirectionComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private data: DataService) { }
 
-  sepoMex!: ICpData[];
+  //$questions: Observable<Question[]> = new Observable();
+  $sepoMex: Observable<ICpData[]> =new Observable();
   ngOnInit( ): void {
-    this.data.getDataByPostalCode("70300").subscribe( placesAsync => this.sepoMex=placesAsync);
-  
   }
+
+  showSecondSection: boolean = false;
 
   @Input() showDirection:boolean=false;
   @Input() direction!:IDirectionInversor;
@@ -26,11 +28,7 @@ export class RegisterDirectionComponent implements OnInit {
   @Output() nextPhase = new EventEmitter<void>();
 
   directionGroup:FormGroup= this.fb.group({
-    state: new FormControl('', Validators.compose([
-      Validators.required])),
-    city: new FormControl('', Validators.compose([
-      Validators.required,
-      ])),
+   
     postalCode: new FormControl('', Validators.compose([
         Validators.required
       ])),
@@ -45,6 +43,13 @@ export class RegisterDirectionComponent implements OnInit {
     ]))
   });
 
+  searchCodePostal(){
+
+    let postalCode = this.directionGroup.get('postalCode')?.value.toString();
+    this.$sepoMex=this.data.getDataByPostalCode(postalCode);
+    this.showSecondSection=true;
+
+  }
   public validationMessages = {
     postalCode: [
       { type: 'required', message: 'No se ha escrito un código postal .' }
@@ -54,12 +59,6 @@ export class RegisterDirectionComponent implements OnInit {
     ],
     street: [
       { type: 'required', message: 'La calle no es válida' }
-    ],
-    state: [
-      { type: 'required', message: 'El estado no esta seleccionado.' }
-    ],
-    city: [
-      { type: 'required', message: 'La ciudad no esta seleccionada.' }
     ],
     intStreet: [
       { type: 'required', message: 'El número de calle no esta seleccionado.' }
