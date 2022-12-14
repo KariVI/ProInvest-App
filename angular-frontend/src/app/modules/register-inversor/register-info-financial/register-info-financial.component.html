@@ -9,7 +9,7 @@
                         <div class="padding-tl">
                             <div *ngFor="let validation of validationMessages.bank">
                               <span
-                                class="text-danger"
+                                class="text-blue"
                                 *ngIf="infoFinanceGroup.get('bank')!.hasError(validation.type)"
                               >
                                 {{ validation.message }}
@@ -24,7 +24,7 @@
                     <div class="padding-tl">
                         <div *ngFor="let validation of validationMessages.clabe">
                           <span
-                            class="text-danger"
+                            class="text-blue"
                             *ngIf="infoFinanceGroup.get('clabe')!.hasError(validation.type)"
                           >
                             {{ validation.message }}
@@ -38,7 +38,7 @@
                     <div class="padding-tl">
                         <div *ngFor="let validation of validationMessages.savings">
                           <span
-                            class="text-danger"
+                            class="text-blue"
                             *ngIf="infoFinanceGroup.get('savings')!.hasError(validation.type)"
                           >
                             {{ validation.message }}
@@ -54,7 +54,7 @@
                     <div class="padding-tl">
                         <div *ngFor="let validation of validationMessages.accountBank">
                           <span
-                            class="text-danger"
+                            class="text-blue"
                             *ngIf="infoFinanceGroup.get('accountBank')!.hasError(validation.type)"
                           >
                             {{ validation.message }}
@@ -70,7 +70,7 @@
                         <button type="button" class="col-5 btn btn-secondary" [disabled]="evaluateForm()">Regresar</button>
                     </div>
                     <div class="col-6">
-                        <button type="button" class="col-5 btn  btn-success btn-secondary" onclick=""  [disabled]="evaluateForm()">Registrar</button>
+                        <button type="button" class="col-5 btn  btn-success btn-secondary" (click)="nextPhase()"  [disabled]="evaluateForm()">Registrar</button>
                     </div>
                     </div>
                 </div>

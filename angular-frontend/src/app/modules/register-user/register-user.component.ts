@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { environment } from '../../enviroments/enviroments'
+import { environmentURL } from '../../enviroments/enviroments'
 import { IDirectionInversor } from '../model/interfaces/IDirection';
 import { IInfoFinancial } from '../model/interfaces/IInfoFinancial';
 import { IUser } from '../model/interfaces/IUser';
@@ -78,10 +78,10 @@ export class RegisterUserComponent implements OnInit {
   }
 
   previousPage(): string{
-    return environment.baseClient;
+    return environmentURL.baseClient;
   }
 
-  createInversor(){
+  createUser(){
     this.user.email= this.userForm.get('email')?.value.toString();
     this.user.password = this.userForm.get('password')?.value.toString();
 

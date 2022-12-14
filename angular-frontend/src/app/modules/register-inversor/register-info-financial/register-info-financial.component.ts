@@ -53,7 +53,9 @@ export class RegisterInfoFinancialComponent implements OnInit {
   }
 
   
-
+  nextPhase(){
+    
+  };
   
   
 }

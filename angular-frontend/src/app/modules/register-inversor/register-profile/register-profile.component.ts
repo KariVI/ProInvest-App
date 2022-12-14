@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { environmentURL } from 'src/app/enviroments/enviroments';
+import { IDropdown, IFormField } from '../../model/interfaces/IForm';
 import { IInversor } from '../../model/interfaces/IInversor';
 
 @Component({
@@ -15,6 +17,8 @@ export class RegisterProfileComponent implements OnInit {
   @Output() previousPhase = new EventEmitter<void>();
   @Output() nextPhase = new EventEmitter<void>();
 
+
+    
   inversorGroup: FormGroup = this.fb.group({
     names: new FormControl('', Validators.compose(
       [Validators.required,
@@ -38,24 +42,38 @@ export class RegisterProfileComponent implements OnInit {
       [Validators.required]))
     })
 
+    
+  showRegisterPage(){
+    let result = environmentURL.baseClient + "principal";
+    return result;
+  }
+  
     public validationMessages = {
       names: [
-        { type: 'pattern', message: 'Los nombres solo deben poseer letras' }
+        { type: 'required', message: 'Ingresa el nombre por favor' }
+        ,{ type: 'pattern', message: 'Los nombres solo deben poseer letras' }
       ],
       lastFatherName: [
+       { type: 'required', message: 'Ingresa el apellido paterno por favor' },
         { type: 'pattern', message: 'El apellido paterno solo deben poseer letras'  }],
       lastMotherName: [
+        { type: 'required', message: 'Ingresa el apellido materno por favor' },
         { type: 'pattern', message: 'El apellido materno solo deben poseer letras'  }],
       rfc: [
+        { type: 'required', message: 'Ingresa el  rfc por favor' },
           { type: 'pattern', message: 'El rfc es invalido'  }],
       date: [
-            { type: 'pattern', message: 'La fecha de nacimiento es invalida'  }],
+        { type: 'required', message: 'Ingresa tu fecha de nacimiento por favor' }
+        ,{ type: 'pattern', message: 'La fecha de nacimiento es invalida'  }],
       work: [
+        { type: 'required', message: 'Ingresa tu profesión por favor' },
               { type: 'pattern', message: 'La profesión es inválida'  }],
       grade: [
-            { type: 'required', message: 'El grado académico es inválido'  }]
+            { type: 'required', message: 'Selecciona tu grado académico'  }]
       
       }
+
+      
 
       evaluateForm():boolean{
         let result: boolean = false;
@@ -77,9 +95,42 @@ export class RegisterProfileComponent implements OnInit {
         this.inversor.gradeAcademic = this.inversorGroup.get('grade')?.value.toString();
         this.nextPhase.emit();
       }
-      
+    
+
+  academicDegree: IDropdown[] = [
+    {
+    displayValue: "Primaria",
+    internalValue: "primaria"
+    },
+    {
+      displayValue: "Secundaria",
+      internalValue: "secundaria"
+      },
+      {
+        displayValue: "Bachillerato",
+        internalValue: "bachiller"
+      },
+      {
+        displayValue: "Carrera técnica",
+        internalValue: "tecnica"
+      },
+      {
+        displayValue: "Universidad",
+        internalValue: "universidad"
+      },
+      {
+        displayValue: "Maestría",
+        internalValue: "maestria"
+        },
+        
+    
+]
 
   ngOnInit(): void {
   }
 
+ 
+  return(){
+    this.previousPhase.emit();
+  }
 }

@@ -20,7 +20,7 @@ import { SimulateInvestmentModule } from './modules/simulate-investment/simulate
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    FormsModule,ReactiveFormsModule, SimulateInvestmentModule
+    FormsModule,ReactiveFormsModule, SimulateInvestmentModule,
   ],
   providers: [ChartsModule],
   bootstrap: [AppComponent]
