@@ -29,7 +29,7 @@ public class DatoSepomexWS {
         
         String holakari;
         List<DatoSepomex> lista = DatoSepomexDAO.getByCp(cp);    
-        return Response.status(200).entity(lista).build();
+        return Response.ok(lista).header("Access-Control-Allow-Origin", "*").build();
     }
     
     @POST
