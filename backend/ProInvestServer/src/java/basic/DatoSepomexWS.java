@@ -31,7 +31,7 @@ public class DatoSepomexWS {
         
         String holakari;
         List<DatoSepomex> lista = DatoSepomexDAO.getByCp(cp);    
-        return Response.status(Status.OK).entity(new Gson().toJson(lista)).build();
+        return Response.status(Status.OK).header("Access-Control-Allow-Origin", "*").entity(new Gson().toJson(lista)).build();
     }
     
     @POST
