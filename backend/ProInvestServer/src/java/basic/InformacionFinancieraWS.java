@@ -1,6 +1,7 @@
 
 package basic;
 
+import com.google.gson.Gson;
 import dao.InformacionFinancieraDAO;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
@@ -12,6 +13,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import pojos.InformacionFinanciera;
 import pojos.Mensaje;
 
@@ -26,7 +28,7 @@ public class InformacionFinancieraWS {
     @POST
     @Path("registrarInformacion")
     @Produces(MediaType.APPLICATION_JSON)
-    public Mensaje registrarInformacionFinanciera(   
+    public Response registrarInformacionFinanciera(   
             @FormParam("idBanco") Integer idBanco,
             @FormParam("clabe") String clabe,
             @FormParam("cuenta") String cuenta,
@@ -40,13 +42,13 @@ public class InformacionFinancieraWS {
         }else{
             mensaje = new Mensaje("No se pudo registrar", true);
         }
-        return mensaje;
+        return Response.status(Response.Status.OK).header("Access-Control-Allow-Origin", "*").entity(new Gson().toJson(mensaje)).build();
     }
     
     @POST
     @Path("validarDatosInformacion")
     @Produces(MediaType.APPLICATION_JSON)
-    public Mensaje existeInformacionFinanciera(
+    public Response existeInformacionFinanciera(
             @FormParam("clabe") String clabe,
             @FormParam("cuenta") String cuenta
     ){
@@ -57,7 +59,7 @@ public class InformacionFinancieraWS {
         }else{
             mensaje = new Mensaje("Los datos no existen", true);
         }
-        return mensaje;
+        return Response.status(Response.Status.OK).header("Access-Control-Allow-Origin", "*").entity(new Gson().toJson(mensaje)).build();
     }
 
     

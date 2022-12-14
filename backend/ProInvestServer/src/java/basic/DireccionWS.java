@@ -1,6 +1,7 @@
 
 package basic;
 
+import com.google.gson.Gson;
 import dao.DireccionDAO;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
@@ -13,6 +14,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import pojos.Direccion;
 import pojos.Mensaje;
 
@@ -26,27 +28,27 @@ public class DireccionWS {
     @GET
     @Path("getByIdDireccion/{idDireccion}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Direccion getByIdDireccion(
+    public Response getByIdDireccion(
             @PathParam("idDireccion") Integer idDireccion
     ){
         Direccion direccion = DireccionDAO.getByIdDireccion(idDireccion);
-        return direccion;
+        return Response.status(Response.Status.OK).header("Access-Control-Allow-Origin", "*").entity(new Gson().toJson(direccion)).build();
     }
     
     @GET
     @Path("getByIdInversionista/{idInversionista}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Direccion getByIdInversionista(
+    public Response getByIdInversionista(
             @PathParam("idInversionista") Integer idInversionista
     ){
         Direccion direccion = DireccionDAO.getByIdInversionista(idInversionista);
-        return direccion;
+        return Response.status(Response.Status.OK).header("Access-Control-Allow-Origin", "*").entity(new Gson().toJson(direccion)).build();
     }
     
     @POST
     @Path("registrarDireccion")
     @Produces(MediaType.APPLICATION_JSON)
-    public Mensaje registrarDireccion(
+    public Response registrarDireccion(
             @FormParam("calle") String calle,
             @FormParam("numeroExterior") Integer numeroExterior,
             @FormParam("numeroInterior") Integer numeroInterior,
@@ -61,6 +63,6 @@ public class DireccionWS {
         }else{
             mensaje = new Mensaje("No se pudo registrar", true);
         }
-        return mensaje;
+        return Response.status(Response.Status.OK).header("Access-Control-Allow-Origin", "*").entity(new Gson().toJson(mensaje)).build();
     }   
 }

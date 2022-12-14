@@ -37,7 +37,7 @@ public class DatoSepomexWS {
     @POST
     @Path("getIdByDatosSepomex")
     @Produces(MediaType.APPLICATION_JSON)
-    public DatoSepomex getIdByDatosSepomex(
+    public Response getIdByDatosSepomex(
             @FormParam("estado") String estado,
             @FormParam("municipio") String municipio,
             @FormParam("colonia") String colonia,
@@ -45,16 +45,16 @@ public class DatoSepomexWS {
     ){
         DatoSepomex dato = new DatoSepomex(estado, municipio, colonia, cp);
         dato.setIdDatoSepomex(DatoSepomexDAO.getIdByDatosSepomex(dato));
-        return dato;
+        return Response.status(Status.OK).header("Access-Control-Allow-Origin", "*").entity(new Gson().toJson(dato)).build();
     }
     
     @GET
     @Path("getByIdDato/{idDatoSepomex}")
     @Produces(MediaType.APPLICATION_JSON)
-    public DatoSepomex getByIdDato(
+    public Response getByIdDato(
            @PathParam("idDatoSepomex") Integer idDatoSepomex
     ){
         DatoSepomex dato = DatoSepomexDAO.getDatoById(idDatoSepomex);
-        return dato;
+        return Response.status(Status.OK).header("Access-Control-Allow-Origin", "*").entity(new Gson().toJson(dato)).build();
     }   
 }
