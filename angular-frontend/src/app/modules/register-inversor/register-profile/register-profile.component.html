@@ -4,11 +4,11 @@
             <form class="user-form" [formGroup]="inversorGroup">
                 <div class="form-outline mb-4">
                     <label class="form-label" for="txName">Nombre*</label>
-                    <input type="text" id="txName" class="form-control" required/>
-                    <div class="padding-tl">
+                      <input matinput type="text" id="txName" class="form-control" required/>
+                    <div class="padding-tl" id="names">
                         <div *ngFor="let validation of validationMessages.names">
                           <span
-                            class="text-danger"
+                            class="text-blue"
                             *ngIf="inversorGroup.get('names')!.hasError(validation.type)"
                           >
                             {{ validation.message }}
@@ -22,7 +22,7 @@
                     <div class="padding-tl">
                         <div *ngFor="let validation of validationMessages.lastFatherName">
                           <span
-                            class="text-danger"
+                            class="text-blue"
                             *ngIf="inversorGroup.get('lastFatherName')!.hasError(validation.type)"
                           >
                             {{ validation.message }}
@@ -36,7 +36,7 @@
                     <div class="padding-tl">
                         <div *ngFor="let validation of validationMessages.lastMotherName">
                           <span
-                            class="text-danger"
+                            class="text-blue"
                             *ngIf="inversorGroup.get('lastMotherName')!.hasError(validation.type)"
                           >
                             {{ validation.message }}
@@ -50,7 +50,7 @@
                     <div class="padding-tl">
                         <div *ngFor="let validation of validationMessages.rfc">
                           <span
-                            class="text-danger"
+                            class="text-blue"
                             *ngIf="inversorGroup.get('rfc')!.hasError(validation.type)"
                           >
                             {{ validation.message }}
@@ -64,7 +64,7 @@
                     <div class="padding-tl">
                         <div *ngFor="let validation of validationMessages.date">
                           <span
-                            class="text-danger"
+                            class="text-blue"
                             *ngIf="inversorGroup.get('date')!.hasError(validation.type)"
                           >
                             {{ validation.message }}
@@ -75,15 +75,19 @@
                 <div class="form-outline mb-4">
                     <label class="form-label" for="cbGrade">Grado académico:* </label> 
                     <br>
-                    <select class="round "  id="cbGrade" aria-label="Default select example">
-                        <option selected value="primaria">Primaria</option>
-                        <option selected value="secundaria">Secundaria</option>
-                        <option selected value="bachiller">Bachillerato</option>
-                        <option selected value="tecnica">Carrera técnica</option>
-                        <option selected value="universidad">Universidad</option>
-                        <option selected value="maestria">Maestría</option>
-                        <option selected value="doctorado">Doctorado</option>
+                    <select class="round " formControlName="grade" id="cbGrade" aria-label="Default select example">
+                        
                     </select>
+                    <div class="padding-tl">
+                        <div *ngFor="let validation of validationMessages.grade">
+                          <span
+                            class="text-blue"
+                            *ngIf="inversorGroup.get('grade')!.hasError(validation.type)"
+                          >
+                            {{ validation.message }}
+                          </span>
+                        </div>     
+                    </div>
                 </div>
   
                 <div class="form-outline mb-4">
@@ -92,7 +96,7 @@
                     <div class="padding-tl">
                         <div *ngFor="let validation of validationMessages.work">
                           <span
-                            class="text-danger"
+                            class="text-blue"
                             *ngIf="inversorGroup.get('work')!.hasError(validation.type)"
                           >
                             {{ validation.message }}
@@ -103,9 +107,9 @@
                 <div class="form-outline mb-4">
                     <div class="row">
                     <div class="col-6">
-                        <button type="button" class="col-5 btn btn-secondary" onclick="previousPage()" >Cancelar</button>
+                      <a [href]="showRegisterPage()"> <button type="button" class="col-5 btn btn-secondary" >Cancelar</button> </a>
                     </div>
-                    <button class="cssbuttons-io-button"  [disabled]=" !evaluateForm()"> Siguiente
+                    <button class="cssbuttons-io-button"  [disabled]=" !evaluateForm()" (click)="createInversor()"> Siguiente
                         <div class="icon">
                         <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"></path><path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" fill="currentColor"></path></svg>
                         </div>

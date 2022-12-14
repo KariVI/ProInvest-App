@@ -5,6 +5,15 @@
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
+a{
+  text-decoration:none;
+  color:white;
+}
+
+.text-blue{
+  color: rgb(115, 115, 247);
+}
+
 .col-11{
     padding-left: 5%;
     padding-right: 5%;

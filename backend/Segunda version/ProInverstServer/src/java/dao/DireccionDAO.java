@@ -105,7 +105,7 @@ public class DireccionDAO {
         return direccion;
     }
     
-    public boolean saveDireccion(Direccion direccion){
+    public static boolean saveDireccion(Direccion direccion){
         boolean saved = false;
         Connection connection = abrirConexionBD();
         if(connection != null){

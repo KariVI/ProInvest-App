@@ -5,8 +5,9 @@ import { RegisterInfoFinancialComponent } from './register-info-financial/regist
 import { RegisterInversorComponent } from './register-inversor.component';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { RegisterProfileComponent } from './register-profile/register-profile.component';
+import {MatInputModule} from '@angular/material/input';
 
-
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { RegisterProfileComponent } from './register-profile/register-profile.co
   ],
   imports: [
     CommonModule,
-    FormsModule,ReactiveFormsModule
+    FormsModule,ReactiveFormsModule,
+    MatInputModule,MatFormFieldModule
   ]
 })
 export class RegisterInversorModule { }

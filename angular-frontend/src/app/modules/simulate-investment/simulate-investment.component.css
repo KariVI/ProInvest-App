@@ -8,6 +8,18 @@
 .col-9{
     margin-left: 14%;
 }
+
+.text-blue{
+    color: rgb(115, 115, 247);
+  }
+
+a{
+    text-decoration:none;
+    color:white;
+}
+.extra-margin{
+    margin-left: 35%;
+}
 .col-11{
     padding-left: 5%;
     padding-right: 5%;

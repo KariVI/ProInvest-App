@@ -26,6 +26,16 @@ public class Direccion {
         this.numeroInterior = numeroInterior;
     }
 
+    public Direccion(String calle, Integer numeroExterior, Integer numeroInterior, Integer idDatoSepomex, Integer idInversionista) {
+        this.calle = calle;
+        this.numeroExterior = numeroExterior;
+        this.numeroInterior = numeroInterior;
+        this.idDatoSepomex = idDatoSepomex;
+        this.idInversionista = idInversionista;
+    }
+    
+    
+
     public String getCalle() {
         return calle;
     }

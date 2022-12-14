@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChartsModule } from 'ng2-charts';
 import { RegisterUserModule } from './modules/register-user/register-user.module';
 import { RegisterInversorModule } from './modules/register-inversor/register-inversor.module';
+import { SimulateInvestmentModule } from './modules/simulate-investment/simulate-investment.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import { RegisterInversorModule } from './modules/register-inversor/register-inv
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    FormsModule,ReactiveFormsModule
+    FormsModule,ReactiveFormsModule, SimulateInvestmentModule,
   ],
   providers: [ChartsModule],
   bootstrap: [AppComponent]

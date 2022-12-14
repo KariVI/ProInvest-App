@@ -1,3 +1,22 @@
 <div class="principal">
-<app-register-profile></app-register-profile>
+<app-register-profile *ngIf="showProfile"
+    [showProfile] = "showProfile"
+    [inversor]="inversor"
+    (previousPhase)="previousSection()"
+    (nextPhase)="nextSection()"
+></app-register-profile>
+<app-register-direction *ngIf="showDirection"
+    [showDirection]="showDirection"
+    [direction]="direction"
+    (previousPhase)="previousSection()"
+    (nextPhase)="nextSection()"
+></app-register-direction>
+
+<app-register-info-financial *ngIf="showInfoFinance"
+    [showInfoFinance]="showInfoFinance"
+    (previousPhase)="previousSection()"
+    
+
+>
+</app-register-info-financial>
 </div>
