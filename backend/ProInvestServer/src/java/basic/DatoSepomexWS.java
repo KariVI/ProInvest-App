@@ -1,6 +1,7 @@
 
 package basic;
 
+import com.google.gson.Gson;
 import dao.DatoSepomexDAO;
 import java.util.List;
 import javax.ws.rs.FormParam;
@@ -11,6 +12,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 import pojos.DatoSepomex;
 
 @Path("datoSepomex")
@@ -29,7 +31,7 @@ public class DatoSepomexWS {
         
         String holakari;
         List<DatoSepomex> lista = DatoSepomexDAO.getByCp(cp);    
-        return Response.ok(lista).header("Access-Control-Allow-Origin", "*").build();
+        return Response.status(Status.OK).entity(new Gson().toJson(lista)).build();
     }
     
     @POST
