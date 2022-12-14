@@ -9,7 +9,7 @@ import { ChartsModule } from 'ng2-charts';
 import { RegisterUserModule } from './modules/register-user/register-user.module';
 import { RegisterInversorModule } from './modules/register-inversor/register-inversor.module';
 import { SimulateInvestmentModule } from './modules/simulate-investment/simulate-investment.module';
-
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent
@@ -21,6 +21,7 @@ import { SimulateInvestmentModule } from './modules/simulate-investment/simulate
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,ReactiveFormsModule, SimulateInvestmentModule,
+     HttpClientModule
   ],
   providers: [ChartsModule],
   bootstrap: [AppComponent]
