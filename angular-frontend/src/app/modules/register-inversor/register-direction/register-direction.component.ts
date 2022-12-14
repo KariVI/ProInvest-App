@@ -1,7 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ThemeService } from 'ng2-charts';
+import { DataService } from 'src/app/services/data.service';
 import { IDirectionInversor } from '../../model/interfaces/IDirection';
+import { ICpData } from '../../model/interfaces/IPostalCode';
 
 @Component({
   selector: 'app-register-direction',
@@ -10,9 +12,12 @@ import { IDirectionInversor } from '../../model/interfaces/IDirection';
 })
 export class RegisterDirectionComponent implements OnInit {
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private data: DataService) { }
 
-  ngOnInit(): void {
+  sepoMex!: ICpData[];
+  ngOnInit( ): void {
+    this.data.getDataByPostalCode("70300").subscribe( placesAsync => this.sepoMex=placesAsync);
+  
   }
 
   @Input() showDirection:boolean=false;
@@ -25,8 +30,7 @@ export class RegisterDirectionComponent implements OnInit {
       Validators.required])),
     city: new FormControl('', Validators.compose([
       Validators.required,
-      ]))
-  ,
+      ])),
     postalCode: new FormControl('', Validators.compose([
         Validators.required
       ])),
@@ -43,7 +47,7 @@ export class RegisterDirectionComponent implements OnInit {
 
   public validationMessages = {
     postalCode: [
-      { type: 'required', message: 'El código postal no esta seleccionado.' }
+      { type: 'required', message: 'No se ha escrito un código postal .' }
     ],
     colony: [
       { type: 'required', message: 'La colonia no esta seleccionada.' }

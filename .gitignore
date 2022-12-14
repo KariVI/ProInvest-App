@@ -13,3 +13,4 @@ backend/ProInverstServer/web/META-INF/context.xml
 *.class
 *.class
 /backend/Segunda version/ProInverstServer/dist/
+/backend/ProInvestServer/dist/

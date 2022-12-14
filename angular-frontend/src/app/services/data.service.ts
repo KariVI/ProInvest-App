@@ -3,25 +3,22 @@ import { HttpClient,  HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environmentURL } from '../enviroments/enviroments';
 import { IUser } from '../modules/model/interfaces/IUser';
-
+import { ICpData } from '../modules/model/interfaces/IPostalCode';
+import { catchError, retry } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
 
-export class UserService {
+export class DataService {
 
-  private url= environmentURL.baseUrl;
+  private url= environmentURL.apiURL;
   constructor(private http: HttpClient) { 
   }
 
-  createUser(newUser: IUser): Observable<string>{
-    let urlUser= `${this.url}/usuarios`;
-    return this.http.post(urlUser, newUser,{
-    headers: new HttpHeaders({
-      'Content-Type':  'application/json'
-    }),
-      responseType: 'text'
-    });
+  getDataByPostalCode(postalCode: string): Observable<ICpData[]>{
+    let urlSepoMex= `${this.url}/datoSepomex/getByCp/${postalCode}`;
+    console.log(urlSepoMex);
+    return this.http.get<ICpData[]>(urlSepoMex);
   }
 
   getUserbyEmail(email : string): Observable<IUser>{
