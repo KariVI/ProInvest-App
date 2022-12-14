@@ -2,6 +2,9 @@
 CREATE DATABASE ProInvest;
 USE ProInvest;
 
+CREATE USER 'usuarioProInvest'@'localhost' IDENTIFIED BY 'UserProInvest123';
+GRANT ALL PRIVILEGES ON * . * TO 'usuarioProInvest'@'localhost';
+
 
 -- ----------------------------
 -- Tabla para `GradoAcademico`
@@ -45,7 +48,6 @@ CREATE TABLE inversionista (
 	apellidoPaterno varchar(255) NOT NULL,	
 	celular varchar(255) NOT NULL,
 	direccionIp varchar(255),
-	empresa varchar(255) NOT NULL,
 	fechaNacimiento DATE NOT NULL,
 	nombre VARCHAR(255) NOT NULL,
 	rfc VARCHAR(15) NOT NULL,
