@@ -17,7 +17,6 @@ export class DataService {
 
   getDataByPostalCode(postalCode: string): Observable<ICpData[]>{
     let urlSepoMex= `${this.url}/datoSepomex/getByCp/${postalCode}`;
-    console.log(this.http.get<ICpData[]>(urlSepoMex));
     return this.http.get<ICpData[]>(urlSepoMex);
   }
 
