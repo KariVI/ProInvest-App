@@ -21,7 +21,7 @@ public class DatoSepomexDAO {
             + "?allowPublicKeyRetrieval=true&useSSL=false";
 
     private static String username = "root";
-    private static String password = "amoapumas";
+    private static String password = "";
 
     public static Connection abrirConexionBD() {
         Connection c = null;
