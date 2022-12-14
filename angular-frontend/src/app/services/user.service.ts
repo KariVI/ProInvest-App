@@ -3,6 +3,7 @@ import { HttpClient,  HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environmentURL } from '../enviroments/enviroments';
 import { IUser } from '../modules/model/interfaces/IUser';
+import { IResponse } from '../modules/model/interfaces/IResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -14,14 +15,12 @@ export class UserService {
   constructor(private http: HttpClient) { 
   }
 
-  createUser(newUser: IUser): Observable<string>{
+  createUser(newUser: IUser): Observable<IResponse>{
     let urlUser= `${this.url}/usuarios`;
-    return this.http.post(urlUser, newUser,{
+    return this.http.post<IResponse>(urlUser, newUser,{
     headers: new HttpHeaders({
       'Content-Type':  'application/json'
-    }),
-      responseType: 'text'
-    });
+    })});
   }
 
   getUserbyEmail(email : string): Observable<IUser>{
@@ -29,4 +28,11 @@ export class UserService {
     return this.http.get<IUser>(urlUser);
   }
   
+  login(user:IUser):Observable<IResponse>{
+    let urlUser= `${this.url}/access/login`;
+    return this.http.post<IResponse>(urlUser, user,{
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json'
+    })});
+  }
 }

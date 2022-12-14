@@ -1,5 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { DataService } from 'src/app/services/data.service';
+import { IBank, ISourceFunds } from '../../model/interfaces/IBank';
 
 @Component({
   selector: 'app-register-info-financial',
@@ -8,12 +11,17 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 })
 export class RegisterInfoFinancialComponent implements OnInit {
 
-  constructor(private fb: FormBuilder) { }
-
-  ngOnInit(): void {
-  }
+  constructor(private fb: FormBuilder, private data: DataService) { }
   @Input() showInfoFinance:boolean=false;
   @Output() previousPhase = new EventEmitter<void>();
+  $banks: Observable<IBank[]> = new Observable();
+  $sourceFunds: Observable<ISourceFunds[]> = new Observable();
+  ngOnInit(): void {
+    this.$banks= this.data.getBanks();
+    this.$sourceFunds = this.data.getSourcesFund();
+  }
+  
+
   infoFinanceGroup:FormGroup= this.fb.group({
     bank: new FormControl('', Validators.compose([
       Validators.required])),

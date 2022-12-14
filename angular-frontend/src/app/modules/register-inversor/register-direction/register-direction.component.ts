@@ -15,7 +15,6 @@ export class RegisterDirectionComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private data: DataService) { }
 
-  //$questions: Observable<Question[]> = new Observable();
   $sepoMex: Observable<ICpData[]> =new Observable();
   ngOnInit( ): void {
   }
@@ -73,10 +72,10 @@ export class RegisterDirectionComponent implements OnInit {
     return result;
   }
 
-  createDirection(){
-    this.direction.city = this.directionGroup.get('city')?.value.toString;
+  createDirection(state:string, city:string){
+    this.direction.city = city;
     this.direction.colony = this.directionGroup.get('colony')?.value.toString;
-    this.direction.state = this.directionGroup.get('state')?.value.toString;
+    this.direction.state = state;
     this.direction.street = this.directionGroup.get('street')?.value.toString;
     this.direction.postalCode = this.directionGroup.get('postalCode')?.value.toString;
     this.direction.intStreet = Number.parseInt(this.directionGroup.get('intStreet')?.value.toString);
