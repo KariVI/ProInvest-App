@@ -3,6 +3,11 @@
     width: 80%;
 }
 
+.principal{
+    background-color: white;
+    padding-top: 3%;
+}
+
 .left-side{
     background-color: #83C0EB;
     height: 100%;

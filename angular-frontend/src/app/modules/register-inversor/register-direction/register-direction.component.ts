@@ -21,7 +21,6 @@ export class RegisterDirectionComponent implements OnInit {
 
   showSecondSection: boolean = false;
 
-  @Input() showDirection:boolean=false;
   @Input() direction:DirectionInversor = new DirectionInversor();
   @Output() previousPhase = new EventEmitter<void>();
   @Output() nextPhase = new EventEmitter<void>();
@@ -74,12 +73,13 @@ export class RegisterDirectionComponent implements OnInit {
 
   createDirection(state:string, city:string){
   
-    this.direction.city = city;
+    /*this.direction.city = city;
     this.direction.colony = this.directionGroup.get('colony')?.value.toString;
     this.direction.state = state;
     this.direction.street = this.directionGroup.get('street')?.value.toString;
     this.direction.postalCode = this.directionGroup.get('postalCode')?.value.toString;
     this.direction.intStreet = Number.parseInt(this.directionGroup.get('intStreet')?.value.toString);
+    */
     this.nextPhase.emit();
   }
 

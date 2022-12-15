@@ -76,9 +76,7 @@ export class RegisterUserComponent implements OnInit {
     return result;
   }
 
-  previousPage(): string{
-    return environmentURL.baseClient;
-  }
+
 
   createUser(){
     let user: IUser={

@@ -9,7 +9,7 @@ import { RegisterUserComponent } from './modules/register-user/register-user.com
 import { SimulateInvestmentComponent } from './modules/simulate-investment/simulate-investment.component';
 
 const routes: Routes = [
-  {path:'', component: AppComponent},
+  {path:'', component: LoginComponent},
   {path:'login', component: LoginComponent},
   {path: 'usuario', component: RegisterUserComponent},
   {path: 'principal', component: SimulateInvestmentComponent},

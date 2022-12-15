@@ -13,7 +13,6 @@ export class RegisterProfileComponent implements OnInit {
 
   constructor(private fb: FormBuilder) { }
   @Input() inversor: Inversor = new Inversor();
-  @Input() showProfile:boolean=false;
   @Output() previousPhase = new EventEmitter<void>();
   @Output() nextPhase = new EventEmitter<void>();
 
@@ -86,13 +85,14 @@ export class RegisterProfileComponent implements OnInit {
 
       
       createInversor(){
-        this.inversor.names = this.inversorGroup.get('names')?.value.toString();
+       /* this.inversor.names = this.inversorGroup.get('names')?.value.toString();
         this.inversor.lastFatherName = this.inversorGroup.get('lastFatherName')?.value.toString();
         this.inversor.lastMotherName = this.inversorGroup.get('lastMotherName')?.value.toString();
         this.inversor.rfc = this.inversorGroup.get('rfc')?.value.toString();
         this.inversor.bornDate = this.inversorGroup.get('date')?.value.toString();
         this.inversor.work = this.inversorGroup.get('work')?.value.toString();
         this.inversor.gradeAcademic = this.inversorGroup.get('grade')?.value.toString();
+        */
         this.nextPhase.emit();
       }
     
@@ -100,6 +100,15 @@ export class RegisterProfileComponent implements OnInit {
 
 
   ngOnInit(): void {
+    if(this.inversor.names!=""){
+      this.inversorGroup.get('names')?.setValue(this.inversor.names);
+      this.inversorGroup.get('lastFatherName')?.setValue(this.inversor.lastFatherName);
+      this.inversorGroup.get('lastMotherName')?.setValue(this.inversor.lastMotherName);
+      this.inversorGroup.get('rfc')?.setValue(this.inversor.rfc);
+      this.inversorGroup.get('date')?.setValue(this.inversor.bornDate);
+      this.inversorGroup.get('work')?.setValue(this.inversor.work);
+      this.inversorGroup.get('gradeAcademic')?.setValue(this.inversor.gradeAcademic);
+    }
   }
 
  

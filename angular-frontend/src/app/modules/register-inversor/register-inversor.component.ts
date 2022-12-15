@@ -26,25 +26,19 @@ export class RegisterInversorComponent implements OnInit {
 
 
   previousSection(){
-    if(this.contSections=0){
-      console.log("pendiente");
-    }else{
-      let aux= ! this.sections[this.contSections];
-      this.sections[this.contSections]= aux;
+  
+    
       this.contSections= this.contSections- 1;
-      aux = ! this.sections[this.contSections];
-      this.sections[this.contSections]= aux;
+    
       
-    }
+    
   }
 
   nextSection(){
    
-      let aux= ! this.sections[this.contSections];
-      this.sections[this.contSections]= aux;
+
       this.contSections= this.contSections + 1;
-      aux = ! this.sections[this.contSections];
-      this.sections[this.contSections]= aux;
+
       
     
   }

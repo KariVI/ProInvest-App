@@ -1,20 +1,16 @@
-<div class="principal">
-<app-register-profile *ngIf="showProfile"
-    [showProfile] = "showProfile"
+<app-register-profile *ngIf="contSections==0"
     [inversor]="inversor"
     (previousPhase)="previousSection()"
     (nextPhase)="nextSection()"
 ></app-register-profile>
-<app-register-direction *ngIf="showDirection"
-    [showDirection]="showDirection"
+<app-register-direction *ngIf="contSections==1"
     [direction]="direction"
     (previousPhase)="previousSection()"
     (nextPhase)="nextSection()"
 ></app-register-direction>
 
-<app-register-info-financial *ngIf="showInfoFinance"
-    [showInfoFinance]="showInfoFinance"
+<app-register-info-financial *ngIf="contSections==2"
     (previousPhase)="previousSection()"
+    (nextPhase)="nextSection()"
 >
 </app-register-info-financial>
-</div>

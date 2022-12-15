@@ -13,11 +13,12 @@ import { IBank, ISourceFunds } from '../../model/interfaces/IBank';
 export class RegisterInfoFinancialComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private data: DataService) { }
-  @Input() showInfoFinance:boolean=false;
   @Input() infoFinancial: InfoFinancial = new InfoFinancial();
   @Output() previousPhase = new EventEmitter<void>();
   $banks: Observable<IBank[]> = new Observable();
   $sourceFunds: Observable<ISourceFunds[]> = new Observable();
+  @Output() nextPhase = new EventEmitter<void>();
+
   ngOnInit(): void {
     this.$banks= this.data.getBanks();
     this.$sourceFunds = this.data.getSourcesFund();
@@ -55,16 +56,18 @@ export class RegisterInfoFinancialComponent implements OnInit {
   }
 
   createInfoFinancial(){
-    this.infoFinancial.bank = this.infoFinanceGroup.get("bank")?.value;
+    /*this.infoFinancial.bank = this.infoFinanceGroup.get("bank")?.value;
     this.infoFinancial.clabe = this.infoFinanceGroup.get("clabe")?.value;
     this.infoFinancial.accountBank = this.infoFinanceGroup.get("accountBank")?.value;
-    this.infoFinancial.savings = this.infoFinanceGroup.get("savings")?.value;
+    this.infoFinancial.savings = this.infoFinanceGroup.get("savings")?.value;*/
+    this.nextPhase.emit();
+
   }
 
-  
-  nextPhase(){
-    
-  };
+  returnInfo(): void{
+    this.previousPhase.emit();
+  }
+ 
   
   
 }

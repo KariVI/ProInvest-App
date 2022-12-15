@@ -11,15 +11,17 @@ import { RegisterInversorModule } from './modules/register-inversor/register-inv
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './modules/login/login/login.component';
 import { SimulateInvestmentComponent } from './modules/simulate-investment/simulate-investment.component';
+import { LoginModule } from './modules/login/login.module';
+import { SimulateInvestmentModule } from './modules/simulate-investment/simulate-investment.module';
 @NgModule({
   declarations: [
-    AppComponent, LoginComponent, SimulateInvestmentComponent
+    AppComponent
   ],
   imports: [
     RegisterUserModule,
     RegisterInversorModule,
     BrowserModule,
-    AppRoutingModule,
+    AppRoutingModule, LoginModule, SimulateInvestmentModule,
     BrowserAnimationsModule,
     FormsModule,ReactiveFormsModule,
      HttpClientModule
