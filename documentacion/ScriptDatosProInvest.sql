@@ -43,12 +43,12 @@ INSERT INTO usuario (correo, contrasena) VALUES
 -- ----------------------------
 -- Insersión datos para `Inversionista`
 -- ----------------------------
-INSERT INTO inversionista (apellidoMaterno, apellidoPaterno, celular, direccionIp, fechaNacimiento, nombre, rfc, idGradoAcademico, idUsuario, idProfesion) VALUES
-('Vargas', 'Ramón', '2287659873', '192.158.1.38', '1988-01-28', 'José', 'RAVO280188HOCRJ', 5, 1, 1),
-('Mateos', 'Dominguez', '2287657853', '192.158.1.38', '1990-04-13', 'Laura', 'DOML130490MOCRJ', 5, 2, 2),
-('Ramirez', 'Anota', '9873789393', '192.158.1.38',  '1990-05-03', 'Armando', 'ANRA280188HOCRJ', 5, 3, 3),
-('Vargas', 'Jimenez', '8763782839', '192.158.1.38',  '1988-10-09', 'Merari', 'JIVM280188HOCRJ', 6, 4, 4),
-('Vasquez', 'Velasquez', '3458920392', '192.158.1.38',  '1991-12-08', 'Pedro', 'VEVP280188HOCRJ', 5, 5, 5);
+INSERT INTO inversionista (apellidoMaterno, apellidoPaterno, celular, direccionIp, fechaNacimiento, nombre, rfc, profesion, idGradoAcademico, idUsuario) VALUES
+('Vargas', 'Ramón', '2287659873', '192.158.1.38', '1988-01-28', 'José', 'RAVO280188HOCRJ', 'Desarrollador', 5, 1),
+('Mateos', 'Dominguez', '2287657853', '192.158.1.38', '1990-04-13', 'Laura', 'DOML130490MOCRJ', 'Doctor', 5, 2),
+('Ramirez', 'Anota', '9873789393', '192.158.1.38',  '1990-05-03', 'Armando', 'ANRA280188HOCRJ', 'Administrador', 5, 3),
+('Vargas', 'Jimenez', '8763782839', '192.158.1.38',  '1988-10-09', 'Merari', 'JIVM280188HOCRJ', 'Desarrollador',  6, 4),
+('Vasquez', 'Velasquez', '3458920392', '192.158.1.38',  '1991-12-08', 'Pedro', 'VEVP280188HOCRJ', 'Desarrollador', 5, 5);
 
 -- ----------------------------
 -- Insersión datos para `banco`

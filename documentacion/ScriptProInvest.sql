@@ -51,13 +51,12 @@ CREATE TABLE inversionista (
 	fechaNacimiento DATE NOT NULL,
 	nombre VARCHAR(255) NOT NULL,
 	rfc VARCHAR(15) NOT NULL,
+	profesion VARCHAR(255) NOT NULL,
     idGradoAcademico int(11) NOT NULL,
     idUsuario int(11) not null,
-    idProfesion int(11) not null,
 	PRIMARY KEY (idInversionista),
     FOREIGN KEY (idGradoAcademico) REFERENCES gradoAcademico(idGradoAcademico),
     foreign key (idUsuario) references usuario(idUsuario),
-    foreign key (idProfesion) references profesion(idProfesion)
 );
 
 -- ----------------------------
