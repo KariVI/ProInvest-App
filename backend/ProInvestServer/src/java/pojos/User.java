@@ -19,6 +19,11 @@ public class User {
         this.correo = correo;
         this.horaAcceso = horaAcceso;
     }
+
+    public User(String correo, String contrasena) {
+        this.contrasena = contrasena;
+        this.correo = correo;
+    }
     
     public Integer getIdUser() {
         return idUser;

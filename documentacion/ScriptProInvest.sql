@@ -1,9 +1,8 @@
+DROP DATABASE  IF EXISTS  proinvest;
+
 ----------------
 CREATE DATABASE ProInvest;
 USE ProInvest;
-
-CREATE USER 'usuarioProInvest'@'localhost' IDENTIFIED BY 'UserProInvest123';
-GRANT ALL PRIVILEGES ON * . * TO 'usuarioProInvest'@'localhost';
 
 
 -- ----------------------------

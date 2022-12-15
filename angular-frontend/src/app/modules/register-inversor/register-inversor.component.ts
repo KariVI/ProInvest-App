@@ -44,31 +44,7 @@ export class RegisterInversorComponent implements OnInit {
   }
 
   saveData():void{
-    let directionI: IDirectionInversor={
-      state: this.direction.state,
-      city: this.direction.city,
-      postalCode: this.direction.postalCode,
-      colony: this.direction.colony,
-      street: this.direction.street,
-      intStreet: this.direction.intStreet
-    }
-
-    let inversorI: IInversor={
-      names:this.inversor.names,
-      lastFatherName: this.inversor.lastFatherName,
-      lastMotherName: this.inversor.lastMotherName,
-      rfc:this.inversor.rfc,
-      bornDate: this.inversor.bornDate,
-      gradeAcademic: this.inversor.gradeAcademic,
-      work:this.inversor.work
-    }
-
-    let infoFinancialI: IInfoFinancial={
-      bank:this.infoFinancial.bank,
-      clabe:this.infoFinancial.clabe,
-      savings:this.infoFinancial.savings,
-      accountBank:this.infoFinancial.accountBank
-  }
+   
   }
 
   ngOnInit(): void {

@@ -22,8 +22,7 @@ export class InvestmentService {
         let urlInversor = `${this.url}/inversionista/registrarInversionista`;
         return this.http.post<IResponse>(urlInversor, newInversor, {
             headers: new HttpHeaders({
-                'Content-Type': 'application/json'
-            })
+                'Content-Type':  'application/x-www-form-urlencoded'            })
         });
     }
 
@@ -31,8 +30,7 @@ export class InvestmentService {
         let urlDirection = `${this.url}/direccion/registrarDireccion`;
         return this.http.post<IResponse>(urlDirection, newDirection, {
             headers: new HttpHeaders({
-                'Content-Type': 'application/json'
-            })
+                'Content-Type':  'application/x-www-form-urlencoded'            })
         });
     }
 
@@ -40,8 +38,7 @@ export class InvestmentService {
         let urlInfo = `${this.url}/informacionFinanciera/registrarInformacion`;
         return this.http.post<IResponse>(urlInfo, newInfo, {
             headers: new HttpHeaders({
-                'Content-Type': 'application/json'
-            })
+                'Content-Type':  'application/x-www-form-urlencoded'            })
         });
     }
 

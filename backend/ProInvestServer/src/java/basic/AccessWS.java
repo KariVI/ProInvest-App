@@ -32,9 +32,8 @@ public class AccessWS {
             @FormParam("contrasena") String contrasena
     ) {
         Mensaje resultado;
-        
-        User u = new User();
-        
+       
+        User u = new User(correo,contrasena);
         boolean res = UserDAO.registrarUser(u);
         if (res) {
             resultado = new Mensaje("Usuario registrado con éxito", false);
