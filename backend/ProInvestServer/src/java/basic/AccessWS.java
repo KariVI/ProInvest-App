@@ -44,8 +44,6 @@ public class AccessWS {
         return Response.status(Response.Status.OK).header("Access-Control-Allow-Origin", "*").entity(new Gson().toJson(resultado)).build();
     }
     
-    
-    
     @POST
     @Path("login")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
