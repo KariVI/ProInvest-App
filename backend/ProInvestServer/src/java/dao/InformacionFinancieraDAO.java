@@ -21,7 +21,11 @@ public class InformacionFinancieraDAO {
             + "?allowPublicKeyRetrieval=true&useSSL=false";
 
     private static String username = "root";
+<<<<<<< HEAD
     private static String password = "amoapumas";
+=======
+    private static String password = "Fairy59Atomic12";
+>>>>>>> 9496f613f314e8c0bc0368ea674dd7bb97d28147
 
     public static Connection abrirConexionBD() {
         Connection c = null;

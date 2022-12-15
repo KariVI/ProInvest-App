@@ -6,17 +6,9 @@
                     <label class="form-label" for="cbBank">Banco: </label> 
                     <br>
                     <select class="round "  id="cbBank" aria-label="Default select example">
-                        <div class="padding-tl">
-                            <div *ngFor="let validation of validationMessages.bank">
-                              <span
-                                class="text-blue"
-                                *ngIf="infoFinanceGroup.get('bank')!.hasError(validation.type)"
-                              >
-                                {{ validation.message }}
-                              </span>
-                            </div>     
-                        </div>  
+                      <option *ngFor="let bank of $banks | async" [value]="bank.nombre">{{bank.nombre}}</option>                     
                     </select>
+                    
                 </div>
                 <div class="form-outline mb-4">
                     <label class="form-label" for="txClabe">Clabe: </label>
@@ -36,31 +28,24 @@
                     <label class="form-label" for="txAccountBank">Cuenta Bancaria: </label>
                     <input type="text" id="txAccountBank" class="form-control" />
                     <div class="padding-tl">
-                        <div *ngFor="let validation of validationMessages.savings">
-                          <span
-                            class="text-blue"
-                            *ngIf="infoFinanceGroup.get('savings')!.hasError(validation.type)"
-                          >
-                            {{ validation.message }}
-                          </span>
-                        </div>     
-                    </div>  
+                      <div *ngFor="let validation of validationMessages.accountBank">
+                        <span
+                          class="text-blue"
+                          *ngIf="infoFinanceGroup.get('accountBank')!.hasError(validation.type)"
+                        >
+                          {{ validation.message }}
+                        </span>
+                      </div>     
+                  </div>  
                 </div>
                 <div class="form-outline mb-4">
                     <label class="form-label" for="cbSavings">Origen de Fondos: </label> 
                     <br>
                     <select class="round "  id="cbSavings" aria-label="Default select example">
+                      <option *ngFor="let source of $sourceFunds | async" [value]="source.origen">{{source.origen}}</option>                     
+
                     </select>
-                    <div class="padding-tl">
-                        <div *ngFor="let validation of validationMessages.accountBank">
-                          <span
-                            class="text-blue"
-                            *ngIf="infoFinanceGroup.get('accountBank')!.hasError(validation.type)"
-                          >
-                            {{ validation.message }}
-                          </span>
-                        </div>     
-                    </div>  
+                   
                 </div>   
 
                 <div class="form-outline mb-4">

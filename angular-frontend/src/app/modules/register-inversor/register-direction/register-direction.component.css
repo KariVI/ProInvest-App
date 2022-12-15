@@ -110,7 +110,8 @@ select.round {
     text-shadow: 0 0 0 #000;
   }
   
-  .btn-secondary{
+  
+  .btn-secondary, .btn-info{
     color: white;
     font-family: inherit;
     padding: 0.35em;
@@ -127,6 +128,10 @@ select.round {
     height: 2.8em;
     width: 10em;
     padding-right: 2.0em;
+  }
+
+  .btn-info{
+    margin-top: 6%;
   }
 
   .cssbuttons-io-button {

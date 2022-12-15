@@ -1,7 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ThemeService } from 'ng2-charts';
-import { IDirectionInversor } from '../../model/interfaces/IDirection';
+import { Observable } from 'rxjs';
+import { DataService } from 'src/app/services/data.service';
+import { DirectionInversor} from '../../model/Direction';
+import { ICpData } from '../../model/interfaces/IPostalCode';
 
 @Component({
   selector: 'app-register-direction',
@@ -10,23 +13,21 @@ import { IDirectionInversor } from '../../model/interfaces/IDirection';
 })
 export class RegisterDirectionComponent implements OnInit {
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private data: DataService) { }
 
-  ngOnInit(): void {
+  $sepoMex: Observable<ICpData[]> =new Observable();
+  ngOnInit( ): void {
   }
 
+  showSecondSection: boolean = false;
+
   @Input() showDirection:boolean=false;
-  @Input() direction!:IDirectionInversor;
+  @Input() direction:DirectionInversor = new DirectionInversor();
   @Output() previousPhase = new EventEmitter<void>();
   @Output() nextPhase = new EventEmitter<void>();
 
   directionGroup:FormGroup= this.fb.group({
-    state: new FormControl('', Validators.compose([
-      Validators.required])),
-    city: new FormControl('', Validators.compose([
-      Validators.required,
-      ]))
-  ,
+   
     postalCode: new FormControl('', Validators.compose([
         Validators.required
       ])),
@@ -41,21 +42,22 @@ export class RegisterDirectionComponent implements OnInit {
     ]))
   });
 
+  searchCodePostal(){
+
+    let postalCode = this.directionGroup.get('postalCode')?.value.toString();
+    this.$sepoMex=this.data.getDataByPostalCode(postalCode);
+    this.showSecondSection=true;
+
+  }
   public validationMessages = {
     postalCode: [
-      { type: 'required', message: 'El código postal no esta seleccionado.' }
+      { type: 'required', message: 'No se ha escrito un código postal .' }
     ],
     colony: [
       { type: 'required', message: 'La colonia no esta seleccionada.' }
     ],
     street: [
       { type: 'required', message: 'La calle no es válida' }
-    ],
-    state: [
-      { type: 'required', message: 'El estado no esta seleccionado.' }
-    ],
-    city: [
-      { type: 'required', message: 'La ciudad no esta seleccionada.' }
     ],
     intStreet: [
       { type: 'required', message: 'El número de calle no esta seleccionado.' }
@@ -70,10 +72,11 @@ export class RegisterDirectionComponent implements OnInit {
     return result;
   }
 
-  createDirection(){
-    this.direction.city = this.directionGroup.get('city')?.value.toString;
+  createDirection(state:string, city:string){
+  
+    this.direction.city = city;
     this.direction.colony = this.directionGroup.get('colony')?.value.toString;
-    this.direction.state = this.directionGroup.get('state')?.value.toString;
+    this.direction.state = state;
     this.direction.street = this.directionGroup.get('street')?.value.toString;
     this.direction.postalCode = this.directionGroup.get('postalCode')?.value.toString;
     this.direction.intStreet = Number.parseInt(this.directionGroup.get('intStreet')?.value.toString);

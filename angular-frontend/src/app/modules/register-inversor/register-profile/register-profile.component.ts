@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { environmentURL } from 'src/app/enviroments/enviroments';
-import { IDropdown, IFormField } from '../../model/interfaces/IForm';
 import { IInversor } from '../../model/interfaces/IInversor';
+import { Inversor } from '../../model/Inversor';
 
 @Component({
   selector: 'app-register-profile',
@@ -12,7 +12,7 @@ import { IInversor } from '../../model/interfaces/IInversor';
 export class RegisterProfileComponent implements OnInit {
 
   constructor(private fb: FormBuilder) { }
-  @Input() inversor!: IInversor;
+  @Input() inversor: Inversor = new Inversor();
   @Input() showProfile:boolean=false;
   @Output() previousPhase = new EventEmitter<void>();
   @Output() nextPhase = new EventEmitter<void>();
@@ -97,34 +97,7 @@ export class RegisterProfileComponent implements OnInit {
       }
     
 
-  academicDegree: IDropdown[] = [
-    {
-    displayValue: "Primaria",
-    internalValue: "primaria"
-    },
-    {
-      displayValue: "Secundaria",
-      internalValue: "secundaria"
-      },
-      {
-        displayValue: "Bachillerato",
-        internalValue: "bachiller"
-      },
-      {
-        displayValue: "Carrera técnica",
-        internalValue: "tecnica"
-      },
-      {
-        displayValue: "Universidad",
-        internalValue: "universidad"
-      },
-      {
-        displayValue: "Maestría",
-        internalValue: "maestria"
-        },
-        
-    
-]
+
 
   ngOnInit(): void {
   }

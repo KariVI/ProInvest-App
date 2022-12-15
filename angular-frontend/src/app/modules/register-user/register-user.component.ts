@@ -13,7 +13,6 @@ import { IUser } from '../model/interfaces/IUser';
 export class RegisterUserComponent implements OnInit {
 
   constructor(private fb: FormBuilder) { }
-  user!: IUser;
   direction!:IDirectionInversor;
   infoFinancial!: IInfoFinancial;
   userForm:FormGroup= this.fb.group({
@@ -82,8 +81,10 @@ export class RegisterUserComponent implements OnInit {
   }
 
   createUser(){
-    this.user.email= this.userForm.get('email')?.value.toString();
-    this.user.password = this.userForm.get('password')?.value.toString();
+    let user: IUser={
+      email: this.userForm.get('email')?.value.toString(),
+     password:this.userForm.get('password')?.value.toString()
+    }
 
   }
 }

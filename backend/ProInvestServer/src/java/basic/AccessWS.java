@@ -1,6 +1,7 @@
 
 package basic;
 
+import com.google.gson.Gson;
 import dao.UserDAO;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
@@ -12,6 +13,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import pojos.Mensaje;
 import pojos.User;
 
@@ -25,7 +27,7 @@ public class AccessWS {
     @Path("signup")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.APPLICATION_JSON)
-    public Mensaje registrarUsuario(
+    public Response registrarUsuario(
             @FormParam("correo") String correo,
             @FormParam("contrasena") String contrasena
     ) {
@@ -39,7 +41,7 @@ public class AccessWS {
         } else {
             resultado = new Mensaje("Error, no se pudo registrar el usuario", true);
         }
-        return resultado;
+        return Response.status(Response.Status.OK).header("Access-Control-Allow-Origin", "*").entity(new Gson().toJson(resultado)).build();
     }
     
     
@@ -48,7 +50,7 @@ public class AccessWS {
     @Path("login")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.APPLICATION_JSON)
-    public Mensaje loginUsuario(
+    public Response loginUsuario(
             @FormParam("correo") String correo,
             @FormParam("contrasena") String contrasena
     ){
@@ -62,6 +64,6 @@ public class AccessWS {
         } else {
             resultado = new Mensaje("Error, you thought you ate but u didn't", true);
         }
-        return resultado;
+        return Response.status(Response.Status.OK).header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT, OPTIONS, HEAD").header("Access-Control-Allow-Origin", "*").header("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With").header("Access-Control-Allow-Credentials", "true").entity(new Gson().toJson(resultado)).build();
     }    
 }
