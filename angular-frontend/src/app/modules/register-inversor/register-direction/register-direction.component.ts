@@ -3,7 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { ThemeService } from 'ng2-charts';
 import { Observable } from 'rxjs';
 import { DataService } from 'src/app/services/data.service';
-import { IDirectionInversor } from '../../model/interfaces/IDirection';
+import { DirectionInversor} from '../../model/Direction';
 import { ICpData } from '../../model/interfaces/IPostalCode';
 
 @Component({
@@ -22,7 +22,7 @@ export class RegisterDirectionComponent implements OnInit {
   showSecondSection: boolean = false;
 
   @Input() showDirection:boolean=false;
-  @Input() direction!:IDirectionInversor;
+  @Input() direction:DirectionInversor = new DirectionInversor();
   @Output() previousPhase = new EventEmitter<void>();
   @Output() nextPhase = new EventEmitter<void>();
 
@@ -73,6 +73,7 @@ export class RegisterDirectionComponent implements OnInit {
   }
 
   createDirection(state:string, city:string){
+  
     this.direction.city = city;
     this.direction.colony = this.directionGroup.get('colony')?.value.toString;
     this.direction.state = state;

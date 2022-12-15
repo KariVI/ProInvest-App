@@ -1,2 +1,7 @@
-
-        <router-outlet></router-outlet>
+        <app-login *ngIf="showLogin"
+                [showMenu]="showMenu"
+        ></app-login>
+        <app-simulate-investment *ngIf="showMenu">
+                
+        </app-simulate-investment>
+        

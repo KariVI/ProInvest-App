@@ -1,4 +1,4 @@
 export interface IResponse{
-    error:string;
+    error:boolean;
     mensaje:string;
 }

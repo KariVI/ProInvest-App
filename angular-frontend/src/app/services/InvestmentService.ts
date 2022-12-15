@@ -14,7 +14,7 @@ import { IInfoFinancial } from '../modules/model/interfaces/IInfoFinancial';
 
 export class InvestmentService {
 
-    private url = environmentURL.baseUrl;
+    private url = environmentURL.apiURL;
     constructor(private http: HttpClient) {
     }
 
