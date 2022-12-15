@@ -64,6 +64,6 @@ public class AccessWS {
         } else {
             resultado = new Mensaje("Error, you thought you ate but u didn't", true);
         }
-        return Response.status(Response.Status.OK).header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT, OPTIONS, HEAD").header("Access-Control-Allow-Origin", "*").entity(new Gson().toJson(resultado)).build();
+        return Response.status(Response.Status.OK).header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT, OPTIONS, HEAD").header("Access-Control-Allow-Origin", "*").header("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With").header("Access-Control-Allow-Credentials", "true").entity(new Gson().toJson(resultado)).build();
     }    
 }
