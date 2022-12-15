@@ -3,13 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/carlosperezperez/Documents/GitHub/ProInvest-App/backend/ProInvestServer/src/java/basic/ApplicationConfig.java</file>
             <file>file:/Users/carlosperezperez/Documents/GitHub/ProInvest-App/backend/ProInvestServer/src/java/basic/AccessWS.java</file>
-            <file>file:/Users/carlosperezperez/Documents/GitHub/ProInvest-App/backend/ProInvestServer/src/java/dao/BancoDAO.java</file>
-            <file>file:/Users/carlosperezperez/Documents/GitHub/ProInvest-App/backend/ProInvestServer/src/java/basic/DatoSepomexWS.java</file>
-            <file>file:/Users/carlosperezperez/Documents/GitHub/ProInvest-App/backend/ProInvestServer/src/java/pojos/Mensaje.java</file>
-            <file>file:/Users/carlosperezperez/Documents/GitHub/ProInvest-App/backend/ProInvestServer/src/java/dao/OrigenFondoDAO.java</file>
-            <file>file:/Users/carlosperezperez/Documents/GitHub/ProInvest-App/backend/ProInvestServer/src/java/basic/OrigenFondoWS.java</file>
+            <file>file:/Users/carlosperezperez/Documents/GitHub/ProInvest-App/backend/ProInvestServer/src/java/basic/DireccionWS.java</file>
         </group>
     </open-files>
 </project-private>
