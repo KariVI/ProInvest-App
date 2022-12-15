@@ -19,7 +19,7 @@ export class UserService {
     let urlUser= `${this.url}/usuarios`;
     return this.http.post<IResponse>(urlUser, newUser,{
     headers: new HttpHeaders({
-      'Content-Type':  'application/json'
+      'Content-Type':  'application/x-www-form-urlencoded'
     })});
   }
 
@@ -32,7 +32,7 @@ export class UserService {
     let urlUser= `${this.url}/access/login`;
     return this.http.post<IResponse>(urlUser, user,{
     headers: new HttpHeaders({
-      'Content-Type':  'application/json'
+      'Content-Type':  'application/x-www-form-urlencoded'
     })});
   }
 }
