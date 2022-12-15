@@ -1,6 +1,9 @@
 
 package dao;
 
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -18,7 +21,7 @@ public class InformacionFinancieraDAO {
             + "?allowPublicKeyRetrieval=true&useSSL=false";
 
     private static String username = "root";
-    private static String password = "";
+    private static String password = "amoapumas";
 
     public static Connection abrirConexionBD() {
         Connection c = null;
@@ -40,8 +43,8 @@ public class InformacionFinancieraDAO {
                                  + "VALUES (?, ?, ?, ?)";
                PreparedStatement ps = connection.prepareStatement(consulta);
                ps.setInt(1, informacion.getIdBanco());
-               ps.setString(2, informacion.getClabe());
-               ps.setString(3, informacion.getCuenta());
+               ps.setString(2, generateMD5(informacion.getClabe()));
+               ps.setString(3, generateMD5(informacion.getCuenta()));
                ps.setInt(4, informacion.getIdOrigenFondo());
                ps.executeUpdate();
                saved = true;
@@ -74,5 +77,25 @@ public class InformacionFinancieraDAO {
             }
         }
         return exists;
+    }
+    
+    public static String generateMD5(String input){
+        String cifrado = null;
+        try {
+            MessageDigest md=MessageDigest.getInstance("md5");
+            md.update(input.getBytes("utf-8"));
+            byte [] hashCode=md.digest();
+            StringBuffer sb=new StringBuffer();
+            for(byte b:hashCode){
+                sb.append(Character.forDigit(b>>4&0xf, 16));
+                sb.append(Character.forDigit(b&0xf, 16));
+            }
+            cifrado = sb.toString();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        return cifrado;
     }
 }
