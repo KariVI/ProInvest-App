@@ -56,7 +56,7 @@ CREATE TABLE inversionista (
     idUsuario int(11) not null,
 	PRIMARY KEY (idInversionista),
     FOREIGN KEY (idGradoAcademico) REFERENCES gradoAcademico(idGradoAcademico),
-    foreign key (idUsuario) references usuario(idUsuario),
+    foreign key (idUsuario) references usuario(idUsuario)
 );
 
 -- ----------------------------
