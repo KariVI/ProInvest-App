@@ -11,7 +11,7 @@ import { IResponse } from '../modules/model/interfaces/IResponse';
 
 export class UserService {
 
-  private url= environmentURL.baseUrl;
+  private url= environmentURL.apiURL;
   constructor(private http: HttpClient) { 
   }
 

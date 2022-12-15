@@ -13,6 +13,9 @@
     width: 50%;
 }
 
+.text-red{
+    color: rgb(247, 131, 115);
+  }
 .row{
     margin-right: -0px;
 }

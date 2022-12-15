@@ -7,5 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Pro-Invest';
-
+  showLogin: boolean = true;
+  showMenu: boolean= false;
 }
