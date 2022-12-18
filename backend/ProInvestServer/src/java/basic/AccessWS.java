@@ -2,7 +2,9 @@
 package basic;
 
 import com.google.gson.Gson;
+import dao.DatoSepomexDAO;
 import dao.UserDAO;
+import java.util.List;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Consumes;
@@ -12,8 +14,10 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import pojos.DatoSepomex;
 import pojos.Mensaje;
 import pojos.User;
 
@@ -42,6 +46,18 @@ public class AccessWS {
         }
         return Response.status(Response.Status.OK).header("Access-Control-Allow-Origin", "*").entity(new Gson().toJson(resultado)).build();
     }
+    
+    @GET
+    @Path("getByCorreo/{correo}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getByCorreo(
+                @PathParam("correo") String correo
+    ){
+        
+        String holakari;
+        boolean u = UserDAO.getByCorreo(correo);
+        return Response.status(Response.Status.OK).header("Access-Control-Allow-Origin", "*").entity(new Gson().toJson(u)).build();
+    }  
     
     @POST
     @Path("login")

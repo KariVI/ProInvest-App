@@ -34,6 +34,7 @@ public class ApplicationConfig extends Application {
         resources.add(basic.DatoSepomexWS.class);
         resources.add(basic.DireccionWS.class);
         resources.add(basic.InformacionFinancieraWS.class);
+        resources.add(basic.InversionistaWS.class);
         resources.add(basic.OrigenFondoWS.class);
 
     }   
