@@ -8,7 +8,7 @@
                 <div class="row">
                   <div class="col-6">
                   <label class="form-label" for="txPostalCode">Código Postal: </label>
-                  <input type="text" id="txPostalCode" maxlength="6" formControlName="postalCode" class="form-control" />
+                  <input type="text" id="txPostalCode" maxlength="6" formControlName="postalCode" class="form-control" required />
                 </div>
                 <div class="col-6">
                   <button type="button" class="col-5 btn btn-info" (click)="searchCodePostal()"> Buscar </button>
@@ -44,6 +44,7 @@
                         <br>
                         <select class="round " formControlName="colony" id="cbColony" aria-label="Default select example">
                           <option *ngFor="let place of $sepoMex | async" [value]="place.colonia">{{place.colonia}}</option>
+                          
                         </select>
                         <div class="padding-tl">
                             <div *ngFor="let validation of validationMessages.colony">
@@ -57,8 +58,8 @@
                         </div>
                     </div>
                     <div class="form-outline mb-4">
-                        <label class="form-label" for="txStreet">Calle</label>
-                        <input type="text" id="txStreet" formControlName="street" class="form-control" />
+                        <label class="form-label" for="txStreet">Calle:*</label>
+                        <input type="text" id="txStreet" formControlName="street" class="form-control" required />
                         <div class="padding-tl">
                             <div *ngFor="let validation of validationMessages.street">
                               <span
@@ -71,8 +72,8 @@
                         </div>
                     </div>
                     <div class="form-outline mb-4">
-                        <label class="form-label" for="txIntStreet">Número de calle:</label>
-                        <input type="number" min="1" id="txIntStreet" formControlName="intStreet" class="form-control" />
+                        <label class="form-label" for="txIntStreet">Número exterior:*</label>
+                        <input type="number" min="1" id="txIntStreet" formControlName="intStreet" class="form-control" required/>
                         <div class="padding-tl">
                             <div *ngFor="let validation of validationMessages.intStreet">
                               <span
@@ -84,18 +85,23 @@
                             </div> 
                         </div> 
                     </div> 
+                    <div class="form-outline mb-4">
+                      <label class="form-label" for="txxSecondIntStreet">Número interior:</label>
+                      <input type="number" min="1" value="1" id="txSecondIntStreet" formControlName="secondIntStreet" class="form-control" />
+                     
+                  </div> 
                 <div class="form-outline mb-4">
                     <div class="row">
                     <div class="col-6">
-                        <button type="button" class="col-5 btn btn-secondary"  >Regresar</button>
+                        <button type="button" class="col-5 btn btn-secondary" (click)="returnInfo()" >Regresar</button>
                     </div>
-                    <div *ngIf="$sepoMex | async as sepoMex">
-                    <button class="cssbuttons-io-button" [disabled]="evaluateForm()" (click)="createDirection(sepoMex[0].estado, sepoMex[0].municipio)"> Siguiente
+                    <div class="col-6">
+                    <button class="cssbuttons-io-button" [disabled]="evaluateForm()"  (click)="nextSection(newDirection)"> Siguiente
                         <div class="icon">
                           <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"></path><path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" fill="currentColor"></path></svg>
                         </div>
                       </button>
-                    </div>
+                  </div>
                     </div>
                 </div>
               </div>

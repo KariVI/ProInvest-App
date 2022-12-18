@@ -14,3 +14,4 @@ backend/ProInverstServer/web/META-INF/context.xml
 *.class
 /backend/Segunda version/ProInverstServer/dist/
 /backend/ProInvestServer/dist/
+backend/ProInvestServer/nbproject/private/private.xml

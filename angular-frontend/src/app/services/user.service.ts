@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient,  HttpHeaders } from '@angular/common/http';
+import { HttpClient,  HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environmentURL } from '../enviroments/enviroments';
 import { IUser } from '../modules/model/interfaces/IUser';
 import { IResponse } from '../modules/model/interfaces/IResponse';
+import { User } from '../modules/model/User';
 
 @Injectable({
   providedIn: 'root'
@@ -15,11 +16,14 @@ export class UserService {
   constructor(private http: HttpClient) { 
   }
 
-  createUser(newUser: IUser): Observable<IResponse>{
-    let urlUser= `${this.url}/usuarios`;
-    return this.http.post<IResponse>(urlUser, newUser,{
+  createUser(newUser: User): Observable<IResponse>{
+    let urlUser= `${this.url}/access/signup`;
+    let payload = new HttpParams()
+    .set('correo', newUser.email)
+    .set('contrasena', newUser.password);
+    return this.http.post<IResponse>(urlUser, payload,{
     headers: new HttpHeaders({
-      'Content-Type':  'application/json'
+      'Content-Type':  'application/x-www-form-urlencoded'
     })});
   }
 
@@ -28,11 +32,14 @@ export class UserService {
     return this.http.get<IUser>(urlUser);
   }
   
-  login(user:IUser):Observable<IResponse>{
+  login(user:User):Observable<IResponse>{
     let urlUser= `${this.url}/access/login`;
-    return this.http.post<IResponse>(urlUser, user,{
+    let payload = new HttpParams()
+    .set('correo', user.email)
+    .set('contrasena', user.password);
+    return this.http.post<IResponse>(urlUser, payload,{
     headers: new HttpHeaders({
-      'Content-Type':  'application/json'
+      'Content-Type':  'application/x-www-form-urlencoded'
     })});
   }
 }

@@ -1,9 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { Observable } from 'rxjs/internal/Observable';
+import { UserService } from 'src/app/services/user.service';
 import { environmentURL } from '../../enviroments/enviroments'
+import { ConfirmMessageComponent } from '../confirm-message/confirm-message.component';
 import { IDirectionInversor } from '../model/interfaces/IDirection';
 import { IInfoFinancial } from '../model/interfaces/IInfoFinancial';
+import { IResponse } from '../model/interfaces/IResponse';
 import { IUser } from '../model/interfaces/IUser';
+import { User } from '../model/User';
 
 @Component({
   selector: 'app-register-user',
@@ -12,7 +18,7 @@ import { IUser } from '../model/interfaces/IUser';
 })
 export class RegisterUserComponent implements OnInit {
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private userService:UserService, public dialog: MatDialog) { }
   direction!:IDirectionInversor;
   infoFinancial!: IInfoFinancial;
   userForm:FormGroup= this.fb.group({
@@ -57,7 +63,6 @@ export class RegisterUserComponent implements OnInit {
     let value: boolean = false;
     let password = this.userForm.get('password')?.value.toString()
     let passwordConfirm = this.userForm.get('passwordConfirm')?.value.toString()
-    console.log(password == passwordConfirm);
 
     if (password == passwordConfirm) {
       value = true;
@@ -76,15 +81,28 @@ export class RegisterUserComponent implements OnInit {
     return result;
   }
 
-  previousPage(): string{
-    return environmentURL.baseClient;
-  }
+
 
   createUser(){
-    let user: IUser={
-      email: this.userForm.get('email')?.value.toString(),
-     password:this.userForm.get('password')?.value.toString()
-    }
+    let user: User = new User();
+    
+    
+    user.email=this.userForm.get('email')?.value.toString(),
+    user.password=this.userForm.get('password')?.value.toString()
+    
 
+    let response: Observable<IResponse>= this.userService.createUser(user);
+  
+    let message: string ="";
+    response.subscribe(
+      responseValue => {
+          this.dialog
+          .open(ConfirmMessageComponent, {
+            data: responseValue.mensaje
+          });
+      },
+    );
+
+   
   }
 }

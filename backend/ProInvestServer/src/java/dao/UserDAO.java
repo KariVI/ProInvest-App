@@ -86,4 +86,30 @@ public class UserDAO {
         }
         return registro;
     }
+    
+    public static boolean getByCorreo(String correo) {
+        boolean existe = false;
+        Connection con = abrirConexionBD();
+        User u = new User();
+        if (con != null) {
+            try {
+                String consulta = "SELECT * from usuario WHERE correo = ? AND contrasena = ?";
+                PreparedStatement ps = con.prepareStatement(consulta);
+                ps.setString(1, correo);
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    u.setIdUser(rs.getInt("idUsuario"));
+                    u.setCorreo(rs.getString("correo"));
+                }
+                con.close();
+                if (u.getIdUser() != null) {
+                    existe = true;
+                }
+            } catch (SQLException s) {
+                System.out.println(s.getMessage());
+                s.printStackTrace();
+            }
+        }
+        return existe;
+    }
 }

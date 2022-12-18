@@ -1,6 +1,6 @@
 export class InfoFinancial{
-    "bank":string
+    "bank":number
     "clabe":string
-    "savings":string
+    "savings":number
     "accountBank":string
 }

@@ -1,8 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { ThemeService } from 'ng2-charts';
 import { Observable } from 'rxjs';
 import { DataService } from 'src/app/services/data.service';
+import { ConfirmMessageComponent } from '../../confirm-message/confirm-message.component';
 import { DirectionInversor} from '../../model/Direction';
 import { ICpData } from '../../model/interfaces/IPostalCode';
 
@@ -13,19 +15,28 @@ import { ICpData } from '../../model/interfaces/IPostalCode';
 })
 export class RegisterDirectionComponent implements OnInit {
 
-  constructor(private fb: FormBuilder, private data: DataService) { }
+  constructor(private fb: FormBuilder, public dialog: MatDialog,private data: DataService) { }
 
   $sepoMex: Observable<ICpData[]> =new Observable();
   ngOnInit( ): void {
+    if(this.direction){
+      this.directionGroup.get('postalCode')?.setValue(this.direction.postalCode);
+      this.$sepoMex=this.data.getDataByPostalCode(this.direction.postalCode);
+      this.directionGroup.get("street")?.setValue(this.direction.street);
+      this.directionGroup.get("intStreet")?.setValue(this.direction.intStreet);
+      if(this.direction.interior!=0){
+        this.directionGroup.get("secondIntStreet")?.setValue(this.direction.interior);
+
+      }
+    }
   }
 
   showSecondSection: boolean = false;
 
-  @Input() showDirection:boolean=false;
   @Input() direction:DirectionInversor = new DirectionInversor();
   @Output() previousPhase = new EventEmitter<void>();
   @Output() nextPhase = new EventEmitter<void>();
-
+  newDirection: DirectionInversor = new DirectionInversor;
   directionGroup:FormGroup= this.fb.group({
    
     postalCode: new FormControl('', Validators.compose([
@@ -39,14 +50,22 @@ export class RegisterDirectionComponent implements OnInit {
       ])),
   intStreet: new FormControl('', Validators.compose([
         Validators.required
-    ]))
+    ])),
+    secondIntStreet: new FormControl('', )
   });
 
   searchCodePostal(){
-
-    let postalCode = this.directionGroup.get('postalCode')?.value.toString();
-    this.$sepoMex=this.data.getDataByPostalCode(postalCode);
-    this.showSecondSection=true;
+    if(this.directionGroup.get('postalCode')?.value){
+      let postalCode = this.directionGroup.get('postalCode')?.value.toString();
+      this.$sepoMex=this.data.getDataByPostalCode(postalCode);
+      this.showSecondSection=true;
+      
+    }else{
+      this.dialog
+          .open(ConfirmMessageComponent, {
+              data: "Escribe tu código postal"
+          });
+    }
 
   }
   public validationMessages = {
@@ -65,24 +84,38 @@ export class RegisterDirectionComponent implements OnInit {
   }
 
   evaluateForm():boolean{
-    let result: boolean = false;
+    let result: boolean = true;
     if(this.directionGroup.valid){
-      result=true;
+      result=false;
     }
     return result;
   }
 
-  createDirection(state:string, city:string){
-  
-    this.direction.city = city;
-    this.direction.colony = this.directionGroup.get('colony')?.value.toString;
-    this.direction.state = state;
-    this.direction.street = this.directionGroup.get('street')?.value.toString;
-    this.direction.postalCode = this.directionGroup.get('postalCode')?.value.toString;
-    this.direction.intStreet = Number.parseInt(this.directionGroup.get('intStreet')?.value.toString);
-    this.nextPhase.emit();
+  createDirection(){
+    this.$sepoMex.forEach(
+      (value: ICpData[]) => {
+       
+          this.newDirection.city = value[0].estado;
+          this.newDirection.state = value[0].municipio;
+        
+      }
+    );
+    this.newDirection= new DirectionInversor();
+    
+    this.newDirection.colony = this.directionGroup.get('colony')?.value.toString;
+    this.newDirection.street = this.directionGroup.get('street')?.value.toString;
+    this.newDirection.postalCode = this.directionGroup.get('postalCode')?.value.toString;
+    this.newDirection.intStreet = Number.parseInt(this.directionGroup.get('intStreet')?.value.toString);
+    if(this.directionGroup.get('secondIntStreet')?.value){
+      this.newDirection.interior = this.directionGroup.get('secondIntStreet')?.value.toString();
+    }
+    
   }
 
+  nextSection(value: any){
+    this.createDirection();
+    this.nextPhase.emit(value);
+  }
   returnInfo(): void{
     this.previousPhase.emit();
   }

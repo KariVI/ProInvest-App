@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RegisterUserComponent } from './register-user.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -12,7 +13,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
   imports: [
     CommonModule,
     FormsModule, ReactiveFormsModule,
-    MatFormFieldModule
+    MatFormFieldModule, RouterModule
   ],
   exports: [
     CommonModule,

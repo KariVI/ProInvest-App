@@ -1,3 +1,4 @@
+<div class="principal">
 <div class="row">
     <div class="col-6">
        <img src="assets/images/principal.png" class="img-fluid" alt="Imagen principal"> 
@@ -13,15 +14,21 @@
                 <label class="form-label" for="txPassword">Contraseña</label>
                 <input type="password" id="txPassword" class="form-control" formControlName="password" />
             </div>
-            <div  *ngIf="$response | async as response">
-                <h6 *ngIf="response.error" class="text-red">El usuario no esta registrado</h6>
-            </div>
-            <button type="button" class="btn btn-primary btn-block mb-4" (click)="login()">Inicia sesión</button>
+            <br>
+            <br>
             
+            <button type="button" class="btn btn-primary btn-block mb-4" (click)="login()">Inicia sesión</button>
+            <div class="row">
             <div class="text-center">
-                <p>¿No estas registrado? <a [href]="url">Registrate</a></p>
+                <p>¿No estas registrado? <a routerLink="/usuario" routerLinkActive="active" ariaCurrentWhenActive="page">Registrate</a></p>
             </div>
-                
+        </div>
+            <router-outlet></router-outlet> 
         </form>
+
+        <div class="row">
+            <div></div>
+        </div>
     </div>
+</div>
 </div>
