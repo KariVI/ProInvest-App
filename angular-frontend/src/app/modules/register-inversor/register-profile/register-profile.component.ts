@@ -14,29 +14,24 @@ export class RegisterProfileComponent implements OnInit {
   constructor(private fb: FormBuilder) { }
   @Input() inversor: Inversor = new Inversor();
   @Output() previousPhase = new EventEmitter<void>();
-  @Output() nextPhase = new EventEmitter<void>();
-
-
+  @Output() nextPhase = new EventEmitter<any>();
+   newInversor: Inversor = new Inversor();
     
   inversorGroup: FormGroup = this.fb.group({
     names: new FormControl('', Validators.compose(
-      [Validators.required,
-    Validators.pattern('a-zA-ZñÑá-úÁ-Ú')])),
+      [Validators.required])),
     lastMotherName: new FormControl('', Validators.compose(
-      [Validators.required,
-      Validators.pattern('a-zA-ZñÑá-úÁ-Ú')])),
+      [Validators.required])),
     lastFatherName: new FormControl('', Validators.compose(
-        [Validators.required,
-        Validators.pattern('a-zA-ZñÑá-úÁ-Ú')])),
+        [Validators.required])),
     rfc: new FormControl('', Validators.compose(
           [Validators.required,
-          Validators.pattern('^[A-Za-zñÑ&]{3,4}\d{6}\w{3}$')])),
+          Validators.pattern(/^[A-ZÑ&]{3,4}\d{6}(?:[A-Z\d]{3})?$/
+          )])),
     date: new FormControl('', Validators.compose(
-            [Validators.required,
-            Validators.pattern('/^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/')])),
+            [Validators.required])),
     work: new FormControl('', Validators.compose(
-              [Validators.required,
-              Validators.pattern('a-zA-ZñÑá-úÁ-Ú')])),
+              [Validators.required])),
     grade: new FormControl('', Validators.compose(
       [Validators.required]))
     })
@@ -50,14 +45,11 @@ export class RegisterProfileComponent implements OnInit {
     public validationMessages = {
       names: [
         { type: 'required', message: 'Ingresa el nombre por favor' }
-        ,{ type: 'pattern', message: 'Los nombres solo deben poseer letras' }
       ],
       lastFatherName: [
-       { type: 'required', message: 'Ingresa el apellido paterno por favor' },
-        { type: 'pattern', message: 'El apellido paterno solo deben poseer letras'  }],
+       { type: 'required', message: 'Ingresa el apellido paterno por favor' }],
       lastMotherName: [
-        { type: 'required', message: 'Ingresa el apellido materno por favor' },
-        { type: 'pattern', message: 'El apellido materno solo deben poseer letras'  }],
+        { type: 'required', message: 'Ingresa el apellido materno por favor' }],
       rfc: [
         { type: 'required', message: 'Ingresa el  rfc por favor' },
           { type: 'pattern', message: 'El rfc es invalido'  }],
@@ -65,8 +57,7 @@ export class RegisterProfileComponent implements OnInit {
         { type: 'required', message: 'Ingresa tu fecha de nacimiento por favor' }
         ,{ type: 'pattern', message: 'La fecha de nacimiento es invalida'  }],
       work: [
-        { type: 'required', message: 'Ingresa tu profesión por favor' },
-              { type: 'pattern', message: 'La profesión es inválida'  }],
+        { type: 'required', message: 'Ingresa tu profesión por favor' }],
       grade: [
             { type: 'required', message: 'Selecciona tu grado académico'  }]
       
@@ -75,9 +66,9 @@ export class RegisterProfileComponent implements OnInit {
       
 
       evaluateForm():boolean{
-        let result: boolean = false;
+        let result: boolean = true;
         if (  this.inversorGroup.valid ) {
-          result = true;
+          result = false;
         }
     
         return result;
@@ -85,29 +76,40 @@ export class RegisterProfileComponent implements OnInit {
 
       
       createInversor(){
-       /* this.inversor.names = this.inversorGroup.get('names')?.value.toString();
-        this.inversor.lastFatherName = this.inversorGroup.get('lastFatherName')?.value.toString();
-        this.inversor.lastMotherName = this.inversorGroup.get('lastMotherName')?.value.toString();
-        this.inversor.rfc = this.inversorGroup.get('rfc')?.value.toString();
-        this.inversor.bornDate = this.inversorGroup.get('date')?.value.toString();
-        this.inversor.work = this.inversorGroup.get('work')?.value.toString();
-        this.inversor.gradeAcademic = this.inversorGroup.get('grade')?.value.toString();
-        */
-        this.nextPhase.emit();
+        
+        this.newInversor.names = this.inversorGroup.get('names')?.value.toString();
+        this.newInversor.lastFatherName = this.inversorGroup.get('lastFatherName')?.value.toString();
+        this.newInversor.lastMotherName = this.inversorGroup.get('lastMotherName')?.value.toString();
+        this.newInversor.rfc = this.inversorGroup.get('rfc')?.value.toString();
+        this.newInversor.bornDate = this.inversorGroup.get('date')?.value.toString();
+        this.newInversor.work = this.inversorGroup.get('work')?.value.toString();
+        this.newInversor.gradeAcademic = this.inversorGroup.get('grade')?.value.toString();
+        
+       
       }
     
+      nextSection(inversor: Inversor){
+        this.createInversor();
+        this.nextPhase.emit(inversor);
+      }
 
 
+      setGrade(){
+        this.inversorGroup.get('gradeAcademic')?.setValue(this.inversor.gradeAcademic);
+
+      }
 
   ngOnInit(): void {
-    if(this.inversor.names!=""){
+    if(this.inversor){
       this.inversorGroup.get('names')?.setValue(this.inversor.names);
       this.inversorGroup.get('lastFatherName')?.setValue(this.inversor.lastFatherName);
       this.inversorGroup.get('lastMotherName')?.setValue(this.inversor.lastMotherName);
       this.inversorGroup.get('rfc')?.setValue(this.inversor.rfc);
       this.inversorGroup.get('date')?.setValue(this.inversor.bornDate);
       this.inversorGroup.get('work')?.setValue(this.inversor.work);
-      this.inversorGroup.get('gradeAcademic')?.setValue(this.inversor.gradeAcademic);
+      this.setGrade();
+      console.log(this.inversorGroup.get('gradeAcademic')?.value);
+
     }
   }
 

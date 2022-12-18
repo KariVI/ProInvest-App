@@ -18,7 +18,7 @@ export class RegisterInfoFinancialComponent implements OnInit {
   $banks: Observable<IBank[]> = new Observable();
   $sourceFunds: Observable<ISourceFunds[]> = new Observable();
   @Output() nextPhase = new EventEmitter<void>();
-
+  newInfoFinancial: InfoFinancial = new InfoFinancial();
   ngOnInit(): void {
     this.$banks= this.data.getBanks();
     this.$sourceFunds = this.data.getSourcesFund();
@@ -56,12 +56,17 @@ export class RegisterInfoFinancialComponent implements OnInit {
   }
 
   createInfoFinancial(){
-    /*this.infoFinancial.bank = this.infoFinanceGroup.get("bank")?.value;
-    this.infoFinancial.clabe = this.infoFinanceGroup.get("clabe")?.value;
-    this.infoFinancial.accountBank = this.infoFinanceGroup.get("accountBank")?.value;
-    this.infoFinancial.savings = this.infoFinanceGroup.get("savings")?.value;*/
-    this.nextPhase.emit();
+    this.newInfoFinancial.bank = this.infoFinanceGroup.get("bank")?.value;
+    this.newInfoFinancial.clabe = this.infoFinanceGroup.get("clabe")?.value;
+    this.newInfoFinancial.accountBank = this.infoFinanceGroup.get("accountBank")?.value;
+    this.newInfoFinancial.savings = this.infoFinanceGroup.get("savings")?.value;
+   
 
+  }
+
+  nextSection(value: any){
+    this.createInfoFinancial();
+    this.nextPhase.emit(value);
   }
 
   returnInfo(): void{

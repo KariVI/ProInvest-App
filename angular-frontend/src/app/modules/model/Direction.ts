@@ -5,4 +5,6 @@ export class DirectionInversor{
     "colony":string="";
     "street": string="";
     "intStreet": number;
+    "interior": number=0;
+    "idInversionista": number;
 }
