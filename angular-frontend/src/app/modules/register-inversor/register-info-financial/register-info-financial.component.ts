@@ -47,11 +47,15 @@ export class RegisterInfoFinancialComponent implements OnInit {
   public validationMessages = {
  
     clabe: [
-      { type: 'required', message: 'La CLABE no es válida.' }
+      { type: 'required', message: 'Ingresa tu CLABE.' }
     ],
     accountBank: [
-      { type: 'required', message: 'La cuenta bancaria no es válida.' }
-    ]
+      { type: 'required', message: 'Ingresa tu cuenta bancaria.' } ],
+    bank: [
+        { type: 'required', message: 'Selecciona tu Banco.' } ],
+    savings: [
+          { type: 'required', message: 'Selecciona el origen de tus fondos.' } ]
+   
    
   }
 

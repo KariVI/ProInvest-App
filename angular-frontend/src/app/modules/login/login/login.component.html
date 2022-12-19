@@ -8,11 +8,11 @@
         <form class="login-form" [formGroup]="loginGroup">
             <div class="form-outline mb-4" >
                 <label class="form-label" for="txUser">Usuario</label>
-                <input type="email" id="txUser" class="form-control"  formControlName="email"/>
+                <input type="email" id="txUser" class="form-control"  formControlName="email" maxlength="200"/>
             </div>
             <div class="form-outline mb-4">
                 <label class="form-label" for="txPassword">Contraseña</label>
-                <input type="password" id="txPassword" class="form-control" formControlName="password" />
+                <input type="password" id="txPassword" class="form-control" formControlName="password" maxlength="150"/>
             </div>
             <br>
             <br>
