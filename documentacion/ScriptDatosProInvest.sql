@@ -87,11 +87,11 @@ INSERT INTO tipoInversion(tipo, plazo, tasaRetorno) VALUES
 -- Insersión datos para `direccion`
 -- ----------------------------
 INSERT INTO direccion(calle, numeroExterior, numeroInterior, idDatosSepomex, idInversionista) VALUES
-('Robles', 130, 0, 5, 1),
-('20 de noviembre', 311, 8, 1029, 2),
-('Benito Juarez', 9, 0, 13, 3),
-('México', 0, 0, 2394, 4),
-('Toluca', 1323, 0, 1331, 5);
+('Robles', 130, 0, 5, 'VEVP280188HOCRJ'),
+('20 de noviembre', 311, 8, 1029, 'DOML130490MOCRJ'),
+('Benito Juarez', 9, 0, 13, 'ANRA280188HOCRJ'),
+('México', 0, 0, 2394, 'JIVM280188HOCRJ'),
+('Toluca', 1323, 0, 1331, 'RAVO280188HOCRJ');
 
 
 

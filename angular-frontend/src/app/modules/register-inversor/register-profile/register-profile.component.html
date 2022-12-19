@@ -74,16 +74,30 @@
                     </div>
                 </div>
                 <div class="form-outline mb-4">
+                  <label class="form-label" for="txDate">Celular*</label>
+                  <input type="text" id="txDate" class="form-control" placeholder="581245567890" max="10" formControlName="cellphone" required/>
+                  <div class="padding-tl">
+                      <div *ngFor="let validation of validationMessages.cellphone">
+                        <span
+                          class="text-blue"
+                          *ngIf="inversorGroup.get('cellphone')!.hasError(validation.type)"
+                        >
+                          {{ validation.message }}
+                        </span>
+                      </div>     
+                  </div>
+              </div>
+                <div class="form-outline mb-4">
                     <label class="form-label" for="cbGrade">Grado académico:* </label> 
                     <br>
                     <select class="round " formControlName="grade" id="cbGrade" aria-label="Default select example" >
-                        <option value="primaria">Primaria</option>
-                        <option value="secundaria">Secundaria</option>
-                        <option value="preparatoria">Preparatoria</option>
-                        <option value="carreraTecnica">Carrera Técnica</option>
-                        <option value="universidad">Universidad</option>
-                        <option value="maestria">Maestría</option>
-                        <option value="doctorado">Doctorado</option>
+                        <option value="1">Primaria</option>
+                        <option value="3">Secundaria</option>
+                        <option value="3">Preparatoria</option>
+                        <option value="4">Carrera Técnica</option>
+                        <option value="5">Universidad</option>
+                        <option value="6">Maestría</option>
+                        <option value="7">Doctorado</option>
                     </select>
                     <div class="padding-tl">
                         <div *ngFor="let validation of validationMessages.grade">
@@ -111,6 +125,20 @@
                         </div>     
                     </div>
                 </div>
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="txEmail">Escribe tu email para validar a nombre de quien será la inversión</label>
+                  <input type="email" id="txEmail" class="form-control"  maxLength="100" formControlName="email" required/>
+                  <div class="padding-tl">
+                      <div *ngFor="let validation of validationMessages.email">
+                        <span
+                          class="text-blue"
+                          *ngIf="inversorGroup.get('email')!.hasError(validation.type)"
+                        >
+                          {{ validation.message }}
+                        </span>
+                      </div>     
+                  </div>
+              </div>
                 <div class="form-outline mb-4">
                     <div class="row">
                     <div class="col-6">

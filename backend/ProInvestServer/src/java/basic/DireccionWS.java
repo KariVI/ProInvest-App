@@ -39,7 +39,7 @@ public class DireccionWS {
     @Path("getByIdInversionista/{idInversionista}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getByIdInversionista(
-            @PathParam("idInversionista") Integer idInversionista
+            @PathParam("idInversionista") String idInversionista
     ){
         Direccion direccion = DireccionDAO.getByIdInversionista(idInversionista);
         return Response.status(Response.Status.OK).header("Access-Control-Allow-Origin", "*").entity(new Gson().toJson(direccion)).build();
@@ -47,13 +47,14 @@ public class DireccionWS {
     
     @POST
     @Path("registrarDireccion")
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.APPLICATION_JSON)
     public Response registrarDireccion(
             @FormParam("calle") String calle,
             @FormParam("numeroExterior") Integer numeroExterior,
             @FormParam("numeroInterior") Integer numeroInterior,
             @FormParam("idDatoSepomex") Integer idDatoSepomex,
-            @FormParam("idInversionista") Integer idInversionista
+            @FormParam("idInversionista") String idInversionista
     ){
         Mensaje mensaje;
         Direccion direccion = new Direccion(calle, numeroExterior, numeroInterior, idDatoSepomex, idInversionista);

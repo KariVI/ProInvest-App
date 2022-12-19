@@ -78,7 +78,7 @@ public class InversionistaWS {
     ){
         
         String holakari;
-        Inversionista i = InversionistaDAO.getIdBy(rfc);
+        int i = InversionistaDAO.getIdBy(rfc);
         return Response.status(Response.Status.OK).header("Access-Control-Allow-Origin", "*").entity(new Gson().toJson(i)).build();
     }  
     

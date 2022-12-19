@@ -8,7 +8,7 @@ public class Direccion {
     private Integer numeroExterior;
     private Integer numeroInterior;
     private Integer idDatoSepomex;
-    private Integer idInversionista;
+    private String idInversionista;
     
     public Direccion() {
         
@@ -20,7 +20,7 @@ public class Direccion {
         this.numeroInterior = numeroInterior;
     }
 
-    public Direccion(String calle, Integer numeroExterior, Integer numeroInterior, Integer idDatoSepomex, Integer idInversionista) {
+    public Direccion(String calle, Integer numeroExterior, Integer numeroInterior, Integer idDatoSepomex, String idInversionista) {
         this.calle = calle;
         this.numeroExterior = numeroExterior;
         this.numeroInterior = numeroInterior;
@@ -66,7 +66,7 @@ public class Direccion {
         return idDireccion;
     }
 
-    public Integer getIdInversionista() {
+    public String getIdInversionista() {
         return idInversionista;
     }
 
@@ -74,7 +74,7 @@ public class Direccion {
         this.idDireccion = idDireccion;
     }
 
-    public void setIdInversionista(Integer idInversionista) {
+    public void setIdInversionista(String idInversionista) {
         this.idInversionista = idInversionista;
     }
 }

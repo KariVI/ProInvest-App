@@ -5,6 +5,9 @@ export class Inversor{
     "lastMotherName": string
     "rfc":string
     "bornDate": string
-    "gradeAcademic": string
+    "gradeAcademic": number
     "work":string
+    "idUser":number
+    "cellphone":string
+    "ipDirection": string;
 }

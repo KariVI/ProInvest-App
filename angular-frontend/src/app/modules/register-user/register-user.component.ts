@@ -81,15 +81,7 @@ export class RegisterUserComponent implements OnInit {
     return result;
   }
 
-  duplicateUser(){
-    let email=this.userForm.get('email')?.value.toString()
-    let existUser: Observable<boolean> = this.userService.getUserbyEmail(email);
-    existUser.subscribe(
-      responseValue => {
-        
-        return responseValue;
-    });
-  }
+
 
 
   createUser(){

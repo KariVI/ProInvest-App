@@ -52,10 +52,10 @@ CREATE TABLE inversionista (
 	rfc VARCHAR(15) NOT NULL,
 	profesion VARCHAR(255) NOT NULL,
     idGradoAcademico int(11) NOT NULL,
-    idUsuario int(11) not null,
+    idUsuario int NOT NULL,
 	PRIMARY KEY (idInversionista),
-    FOREIGN KEY (idGradoAcademico) REFERENCES gradoAcademico(idGradoAcademico),
-    foreign key (idUsuario) references usuario(idUsuario)
+    FOREIGN KEY (idUsuario) REFERENCES usuario(idUsuario),
+    FOREIGN KEY (idGradoAcademico) REFERENCES gradoAcademico(idGradoAcademico)
 );
 
 -- ----------------------------
@@ -148,9 +148,8 @@ CREATE TABLE direccion (
     numeroExterior INT, 
 	numeroInterior INT, 
     idDatosSepomex int not null,
-	idInversionista INT NOT NULL,
+	idInversionista VARCHAR(20) NOT NULL,
 	PRIMARY KEY (idDireccion),
-	FOREIGN KEY (idInversionista) REFERENCES inversionista(idInversionista),
     FOREIGN KEY(idDatosSepomex) REFERENCES datosSepomex(idDatosSepomex)
 );
 

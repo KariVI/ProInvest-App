@@ -35,8 +35,8 @@ export class RegisterDirectionComponent implements OnInit {
 
   @Input() direction:DirectionInversor = new DirectionInversor();
   @Output() previousPhase = new EventEmitter<void>();
-  @Output() nextPhase = new EventEmitter<void>();
-  newDirection: DirectionInversor = new DirectionInversor;
+  @Output() nextPhase = new EventEmitter<any>();
+  newDirection: DirectionInversor = new DirectionInversor();
   directionGroup:FormGroup= this.fb.group({
    
     postalCode: new FormControl('', Validators.compose([
@@ -92,29 +92,21 @@ export class RegisterDirectionComponent implements OnInit {
   }
 
   createDirection(){
-    this.$sepoMex.subscribe(
-      value => {
-       
-          this.newDirection.city = value[0].estado;
-          this.newDirection.state = value[0].municipio;
-        
-      }
-    );
+  
     this.newDirection= new DirectionInversor();
     
-    this.newDirection.colony = this.directionGroup.get('colony')?.value.toString;
-    this.newDirection.street = this.directionGroup.get('street')?.value.toString;
-    this.newDirection.postalCode = this.directionGroup.get('postalCode')?.value.toString;
-    this.newDirection.intStreet = Number.parseInt(this.directionGroup.get('intStreet')?.value.toString);
+    this.newDirection.colony = this.directionGroup.get('colony')?.value.toString();
+    this.newDirection.street = this.directionGroup.get('street')?.value.toString();
+    this.newDirection.postalCode = this.directionGroup.get('postalCode')?.value.toString();
+    this.newDirection.intStreet = Number.parseInt(this.directionGroup.get('intStreet')?.value.toString());
     if(this.directionGroup.get('secondIntStreet')?.value){
-      this.newDirection.interior = this.directionGroup.get('secondIntStreet')?.value.toString();
+      this.newDirection.interior = Number.parseInt(this.directionGroup.get('secondIntStreet')?.value.toString());
     }
-    
   }
 
-  nextSection(value: any){
+  nextSection(direction: DirectionInversor){
     this.createDirection();
-    this.nextPhase.emit(value);
+    this.nextPhase.emit(this.newDirection);
   }
   returnInfo(): void{
     this.previousPhase.emit();
