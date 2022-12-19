@@ -106,7 +106,6 @@ export class RegisterDirectionComponent implements OnInit {
 
   nextSection(direction: DirectionInversor){
     this.createDirection();
-    console.log(this.newDirection);
     this.nextPhase.emit(this.newDirection);
   }
   returnInfo(): void{

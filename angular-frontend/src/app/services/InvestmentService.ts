@@ -38,7 +38,6 @@ export class InvestmentService {
     }
 
     createDirection(newDirection: DirectionInversor): Observable<IResponse> {  
-        console.log(newDirection); 
         let urlDirection = `${this.url}/direccion/registrarDireccion`;
         let payload = new HttpParams()
         .set('calle', newDirection.street)
@@ -46,7 +45,6 @@ export class InvestmentService {
         .set('numeroInterior', newDirection.interior)
         .set('idDatoSepomex', Number.parseInt(newDirection.postalCode))
         .set("idInversionista", newDirection.idInversionista);
-        console.log(payload);
         return this.http.post<IResponse>(urlDirection, payload, {
             headers: new HttpHeaders({
                 'Content-Type':  'application/x-www-form-urlencoded'            })

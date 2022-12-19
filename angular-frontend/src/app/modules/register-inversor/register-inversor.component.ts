@@ -51,7 +51,6 @@ export class RegisterInversorComponent implements OnInit {
       break;
       case 1: 
       this.direction = object;
-      console.log("Direccion" + this.direction);
       break;
       case 2:
         this.infoFinancial = object;
