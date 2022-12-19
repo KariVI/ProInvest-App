@@ -26,11 +26,11 @@ export class RegisterInfoFinancialComponent implements OnInit {
   
 
   infoFinanceGroup:FormGroup= this.fb.group({
-    bank: new FormControl('', Validators.required),
+    bank: new FormControl('',null),
     clabe: new FormControl('', Validators.compose([
       Validators.required,
       ])),
-    savings: new FormControl('',Validators.required),
+    savings: new FormControl('',null),
     accountBank: new FormControl('', Validators.compose([
         Validators.required
       ]))
@@ -38,7 +38,9 @@ export class RegisterInfoFinancialComponent implements OnInit {
 
   evaluateForm():boolean{
     let result: boolean = true;
-    if(this.infoFinanceGroup.valid){
+    let bank = this.infoFinanceGroup.get("bank")?.value;
+    let savings = this.infoFinanceGroup.get("savings")?.value;
+    if(this.infoFinanceGroup.valid && bank!="none" && savings!="none" ){
       result=false;
     }
     return result;
@@ -50,11 +52,8 @@ export class RegisterInfoFinancialComponent implements OnInit {
       { type: 'required', message: 'Ingresa tu CLABE.' }
     ],
     accountBank: [
-      { type: 'required', message: 'Ingresa tu cuenta bancaria.' } ],
-    bank: [
-        { type: 'required', message: 'Selecciona tu Banco.' } ],
-    savings: [
-          { type: 'required', message: 'Selecciona el origen de tus fondos.' } ]
+      { type: 'required', message: 'Ingresa tu cuenta bancaria.' } ]
+   
    
    
   }
