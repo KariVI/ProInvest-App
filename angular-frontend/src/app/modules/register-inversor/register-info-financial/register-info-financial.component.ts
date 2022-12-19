@@ -26,20 +26,20 @@ export class RegisterInfoFinancialComponent implements OnInit {
   
 
   infoFinanceGroup:FormGroup= this.fb.group({
-    bank: new FormControl('', null),
+    bank: new FormControl('', Validators.required),
     clabe: new FormControl('', Validators.compose([
       Validators.required,
       ])),
-    savings: new FormControl('',null),
+    savings: new FormControl('',Validators.required),
     accountBank: new FormControl('', Validators.compose([
         Validators.required
       ]))
   });
 
   evaluateForm():boolean{
-    let result: boolean = false;
-    if(this.infoFinanceGroup){
-      result=true;
+    let result: boolean = true;
+    if(this.infoFinanceGroup.valid){
+      result=false;
     }
     return result;
   }

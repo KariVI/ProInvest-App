@@ -92,8 +92,8 @@ export class RegisterDirectionComponent implements OnInit {
   }
 
   createDirection(){
-    this.$sepoMex.forEach(
-      (value: ICpData[]) => {
+    this.$sepoMex.subscribe(
+      value => {
        
           this.newDirection.city = value[0].estado;
           this.newDirection.state = value[0].municipio;

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute, Router } from '@angular/router';
 import { InvestmentService } from 'src/app/services/InvestmentService';
+import { ConfirmMessageComponent } from '../confirm-message/confirm-message.component';
 import { DirectionInversor } from '../model/Direction';
 import { InfoFinancial } from '../model/InfoFinancial';
 import { IDirectionInversor } from '../model/interfaces/IDirection';
@@ -15,7 +18,10 @@ import { Inversor } from '../model/Inversor';
 })
 export class RegisterInversorComponent implements OnInit {
 
-  constructor(private fb: FormBuilder, private investmentService:InvestmentService) { }
+  constructor(private fb: FormBuilder, public dialog: MatDialog,
+     private router: Router,
+     private route: ActivatedRoute, 
+    private investmentService:InvestmentService) { }
   inversor: Inversor = new Inversor()  ;
   direction!: DirectionInversor;
   infoFinancial!: InfoFinancial ;
@@ -47,17 +53,80 @@ export class RegisterInversorComponent implements OnInit {
       case 2:
         this.infoFinancial = object;
         break;
+   
     }
     this.contSections= this.contSections + 1;
-  
+    if(this.contSections==3){
+      this.saveData();
+    }
 
       
     
   }
 
   saveData():void{
-   this.investmentService.createInversor(this.inversor);
-  }
+   let response= this.investmentService.createInversor(this.inversor);
+   
+   response.subscribe(
+    response=>{
+      if(!response.error){
+              this.dialog
+              .open(ConfirmMessageComponent, {
+                data: "Datos del inversionista registrado con éxito"
+          });
+        }else{
+          this.dialog
+          .open(ConfirmMessageComponent, {
+            data: response.mensaje
+      });
+        }
+      }
+      )
+      let idInversionista = this.investmentService.getInversor(this.inversor.rfc).subscribe(
+          value =>{
+            this.direction.idInversionista = value.id
+            let responseDirection = this.investmentService.createDirection(this.direction);
+            responseDirection.subscribe(
+            valueDirection=> {
+             if(!valueDirection.error){     
+              this.dialog
+              .open(ConfirmMessageComponent, {
+                data: "La dirección del inversionista se ha registrado con éxito"
+              });
+              this.router.navigate([`/principal`], { relativeTo: this.route });
+             }else{
+              this.dialog
+              .open(ConfirmMessageComponent, {
+                data: valueDirection.mensaje
+              });
+             }
+            })
+          }
+        )
+       let responseInfo = this.investmentService.createInfoFinancial(this.infoFinancial);
+        responseInfo.subscribe(
+          value=> {
+             if(!value.error){     
+              this.dialog
+              .open(ConfirmMessageComponent, {
+                data: "La información financiera se ha registrado con éxito"
+              });
+             }else{
+              this.dialog
+              .open(ConfirmMessageComponent, {
+                data: value.mensaje
+              });
+             }
+            })
+          
+            this.router.navigate([`/principal`], { relativeTo: this.route });
+         
+      
+    }
+    
+   
+  
+  
 
   ngOnInit(): void {
   }

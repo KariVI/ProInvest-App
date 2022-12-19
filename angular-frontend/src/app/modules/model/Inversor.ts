@@ -1,4 +1,5 @@
 export class Inversor{
+    "id": number
     "names":string
     "lastFatherName": string
     "lastMotherName": string
