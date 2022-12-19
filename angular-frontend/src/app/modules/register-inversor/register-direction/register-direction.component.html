@@ -43,7 +43,9 @@
                         <label class="form-label" for="cbColony">Colonia: </label> 
                         <br>
                         <select class="round " formControlName="colony" id="cbColony" aria-label="Default select example">
-                          <option *ngFor="let place of $sepoMex | async" [value]="place.colonia">{{place.colonia}}</option>
+                          <option value="none" selected disabled >Selecciona una colonia</option>
+
+                          <option *ngFor="let place of $sepoMex | async" [value]="place.colonia" >{{place.colonia}}</option>
                           
                         </select>
                         <div class="padding-tl">

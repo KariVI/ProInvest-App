@@ -6,6 +6,8 @@
                     <label class="form-label" for="cbBank">Banco: </label> 
                     <br>
                     <select class="round "  id="cbBank"  formControlName="bank" aria-label="Default select example">
+                      
+                      <option value="none" selected disabled >Selecciona un banco</option>
                       <option *ngFor="let bank of $banks | async" [value]="bank.idBanco">{{bank.nombre}}</option>                     
                     </select>
                     <div class="padding-tl">
@@ -51,7 +53,9 @@
                     <label class="form-label" for="cbSavings">Origen de Fondos: </label> 
                     <br>
                     <select class="round "  id="cbSavings" formControlName="savings" aria-label="Default select example">
-                      <option *ngFor="let source of $sourceFunds | async" [value]="source.idOrigenFondo">{{source.origen}}</option>                     
+                      <option value="none" selected disabled >Selecciona un origen de fondo</option>
+                      
+                      <option *ngFor="let source of $sourceFunds | async" [value]="source.idOrigenFondo" >{{source.origen}}</option>                     
 
                     </select>
                     <div class="padding-tl">
