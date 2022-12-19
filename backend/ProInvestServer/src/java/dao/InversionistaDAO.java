@@ -29,7 +29,7 @@ public class InversionistaDAO {
             + "?allowPublicKeyRetrieval=true&useSSL=false";
 
     private static String username = "root";
-    private static String password = "lady16MAKEUP"; //Fairy59Atomic12
+    private static String password = "Fairy59Atomic12"; //Fairy59Atomic12
 
     public static Connection abrirConexionBD() {
         Connection c = null;
@@ -50,18 +50,19 @@ public class InversionistaDAO {
         System.out.println(formatter.format(date));
         if (con != null) {
             try {
-                String consulta = "INSERT INTO inversionista (apellidoPaterno, apellidoMaterno, celular, direccionip, fechaNacimiento, nombre, rfc, profesion, idGradoAcademico, idUsuario) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                java.sql.Date fechaCasteada = new java.sql.Date(i.getFechaNacimiento().getTime());
+                String consulta = "INSERT INTO inversionista (apellidoMaterno, apellidoPaterno, celular, direccionIp, fechaNacimiento, nombre, rfc, profesion, idGradoAcademico, idUsuario) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                 PreparedStatement ps = con.prepareStatement(consulta);
-                ps.setString(1, i.getApellidoPaterno());
-                ps.setString(1, i.getApellidoMaterno());
-                ps.setString(1, i.getCelular());
-                ps.setString(1, i.getDireccionip());
-                ps.setDate(1, (java.sql.Date) i.getFechaNacimiento());
-                ps.setString(1, i.getNombre());
-                ps.setString(1, i.getRfc());
-                ps.setString(1, i.getProfesion());
-                ps.setInt(1, i.getIdGradoAcademico());
-                ps.setInt(1, i.getIdInversionista());
+                ps.setString(1,i.getApellidoMaterno());
+                ps.setString(2, i.getApellidoPaterno());
+                ps.setString(3, i.getCelular());
+                ps.setString(4, i.getDireccionip());
+                ps.setDate(5, fechaCasteada);
+                ps.setString(6, i.getNombre());
+                ps.setString(7, i.getRfc());
+                ps.setString(8, i.getProfesion());
+                ps.setInt(9, i.getIdGradoAcademico());
+                ps.setInt(10, i.getIdUsuario());
                 
                 int respIns = ps.executeUpdate();
                 regInv = (respIns > 0);
