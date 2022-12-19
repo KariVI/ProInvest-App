@@ -445,6 +445,29 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "getUserByEmail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8084/ProInvestServer/api/access/getUserByEmail/jose_ramon@gmail.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"ProInvestServer",
+								"api",
+								"access",
+								"getUserByEmail",
+								"jose_ramon@gmail.com"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
