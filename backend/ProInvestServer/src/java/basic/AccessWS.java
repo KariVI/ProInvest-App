@@ -56,7 +56,18 @@ public class AccessWS {
         
         boolean u = UserDAO.getByCorreo(correo);
         return Response.status(Response.Status.OK).header("Access-Control-Allow-Origin", "*").entity(new Gson().toJson(u)).build();
-    }  
+    } 
+    
+    @GET
+    @Path("getUserByEmail/{correo}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getUserByEmail(
+                @PathParam("correo") String correo
+    ){
+        
+        User u = UserDAO.getUserByEmail(correo);
+        return Response.status(Response.Status.OK).header("Access-Control-Allow-Origin", "*").entity(new Gson().toJson(u)).build();
+    } 
     
     @POST
     @Path("login")

@@ -21,7 +21,7 @@ public class UserDAO {
             + "?allowPublicKeyRetrieval=true&useSSL=false";
 
     private static String username = "root";
-    private static String password = "Fairy59Atomic12"; //lady16MAKEUP
+    private static String password = "Fairy59Atomic12"; //Fairy59Atomic12
 
     public static Connection abrirConexionBD() {
         Connection c = null;
@@ -111,5 +111,29 @@ public class UserDAO {
             }
         }
         return existe;
+    }
+    
+    public static User getUserByEmail (String correo){
+        Connection con = abrirConexionBD();
+        User u = new User();
+        if (con != null) {
+            try {
+                String consulta = "SELECT * from usuario WHERE correo = ?";
+                PreparedStatement ps = con.prepareStatement(consulta);
+                ps.setString(1, correo);
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    u.setIdUser(rs.getInt("idUsuario"));
+                    u.setCorreo(rs.getString("correo"));
+                    u.setContrasena(rs.getString("contrasena"));
+                }
+                con.close();
+                
+            } catch (SQLException s) {
+                System.out.println(s.getMessage());
+                s.printStackTrace();
+            }
+        }
+        return u;
     }
 }
