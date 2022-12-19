@@ -20,7 +20,7 @@ public class BancoDAO {
             + "?allowPublicKeyRetrieval=true&useSSL=false";
 
     private static String username = "root";
-    private static String password = "Fairy59Atomic12"; //lady16MAKEUP
+    private static String password = "lady16MAKEUP"; //lady16MAKEUP
 
     public static Connection abrirConexionBD() {
         Connection c = null;

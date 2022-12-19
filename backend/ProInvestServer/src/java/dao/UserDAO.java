@@ -21,7 +21,7 @@ public class UserDAO {
             + "?allowPublicKeyRetrieval=true&useSSL=false";
 
     private static String username = "root";
-    private static String password = "Fairy59Atomic12"; //Fairy59Atomic12
+    private static String password = "lady16MAKEUP"; //Fairy59Atomic12
 
     public static Connection abrirConexionBD() {
         Connection c = null;
