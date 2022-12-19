@@ -6,5 +6,5 @@ export class DirectionInversor{
     "street": string="";
     "intStreet": number;
     "interior": number=0;
-    "idInversionista": number;
+    "idInversionista": string;
 }

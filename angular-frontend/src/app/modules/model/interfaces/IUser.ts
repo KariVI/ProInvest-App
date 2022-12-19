@@ -1,4 +1,7 @@
 export interface IUser{
-    email:string | undefined,
-    password:string | undefined
+    idUser: number ,
+    password:string | undefined,
+    email:string | undefined
+    
+    
 }

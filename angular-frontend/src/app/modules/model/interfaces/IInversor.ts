@@ -5,6 +5,20 @@ export interface IInversor{
     lastMotherName: string,
     rfc:string,
     bornDate: string,
-    gradeAcademic: string,
-    work:string
+    gradeAcademic: number,
+    work:string,
+    idUser:number,
+    ipDirection: string
+
+}
+
+export interface ResponseInversor{
+    id: number,
+    lastFatherName: string,
+    lastMotherName: string,
+    cellphone: string,
+    ipDirection: string
+    bornDate: string,
+    names: string,
+    work: string
 }

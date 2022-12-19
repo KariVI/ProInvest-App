@@ -1,7 +1,12 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { Observable } from 'rxjs';
 import { environmentURL } from 'src/app/enviroments/enviroments';
+import { UserService } from 'src/app/services/user.service';
+import { ConfirmMessageComponent } from '../../confirm-message/confirm-message.component';
 import { IInversor } from '../../model/interfaces/IInversor';
+import { IUser } from '../../model/interfaces/IUser';
 import { Inversor } from '../../model/Inversor';
 
 @Component({
@@ -11,12 +16,15 @@ import { Inversor } from '../../model/Inversor';
 })
 export class RegisterProfileComponent implements OnInit {
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, 
+    public dialog: MatDialog,
+    private userService: UserService) { }
   @Input() inversor: Inversor = new Inversor();
   @Output() previousPhase = new EventEmitter<void>();
   @Output() nextPhase = new EventEmitter<any>();
    newInversor: Inversor = new Inversor();
-    
+   existEmail: boolean = false;
+   ipDirection:string = "128.920.092.1";
   inversorGroup: FormGroup = this.fb.group({
     names: new FormControl('', Validators.compose(
       [Validators.required])),
@@ -33,7 +41,12 @@ export class RegisterProfileComponent implements OnInit {
     work: new FormControl('', Validators.compose(
               [Validators.required])),
     grade: new FormControl('', Validators.compose(
-      [Validators.required]))
+      [Validators.required])),
+      email: new FormControl('', Validators.compose([
+        Validators.required,
+        Validators.email])),
+        cellphone: new FormControl('', Validators.compose(
+          [Validators.required, Validators.pattern("[0-9]*")]))
     })
 
     
@@ -60,6 +73,11 @@ export class RegisterProfileComponent implements OnInit {
         { type: 'required', message: 'Ingresa tu profesión por favor' }],
       grade: [
             { type: 'required', message: 'Selecciona tu grado académico'  }]
+      ,email:[
+        { type: 'email', message: 'El correo no es valido.' }],
+        cellphone: [
+          { type: 'required', message: 'Ingresa tu celular por favor'  },
+          { type: 'pattern', message: 'El celular es inválido'  }]
       
       }
 
@@ -77,20 +95,41 @@ export class RegisterProfileComponent implements OnInit {
       
       createInversor(){
         
-        this.newInversor.names = this.inversorGroup.get('names')?.value.toString();
-        this.newInversor.lastFatherName = this.inversorGroup.get('lastFatherName')?.value.toString();
-        this.newInversor.lastMotherName = this.inversorGroup.get('lastMotherName')?.value.toString();
-        this.newInversor.rfc = this.inversorGroup.get('rfc')?.value.toString();
-        this.newInversor.bornDate = this.inversorGroup.get('date')?.value.toString();
-        this.newInversor.work = this.inversorGroup.get('work')?.value.toString();
-        this.newInversor.gradeAcademic = this.inversorGroup.get('grade')?.value.toString();
         
-       
+        let email = this.inversorGroup.get('email')?.value.toString();
+        let user: Observable<IUser> = this.userService.getByEmail(email);
+       user.subscribe(
+        value => {
+          if(value.idUser){
+             this.existEmail=false;
+            this.newInversor.idUser = value.idUser
+            this.newInversor.names = this.inversorGroup.get('names')?.value.toString();
+            this.newInversor.lastFatherName = this.inversorGroup.get('lastFatherName')?.value.toString();
+            this.newInversor.lastMotherName = this.inversorGroup.get('lastMotherName')?.value.toString();
+            this.newInversor.rfc = this.inversorGroup.get('rfc')?.value.toString();
+            this.newInversor.bornDate = this.inversorGroup.get('date')?.value.toString();
+            this.newInversor.work = this.inversorGroup.get('work')?.value.toString();
+            this.newInversor.gradeAcademic =Number.parseInt( this.inversorGroup.get('grade')?.value.toString());
+
+            this.newInversor.cellphone = this.inversorGroup.get('cellphone')?.value.toString();
+            this.newInversor.ipDirection = this.ipDirection;
+          }else{
+             this.existEmail=true;
+            this.dialog
+            .open(ConfirmMessageComponent, {
+              data: "El email no existe"
+             
+            });
+          }
+        }
+       )
       }
     
       nextSection(inversor: Inversor){
         this.createInversor();
-        this.nextPhase.emit(inversor);
+        if(!this.existEmail){
+          this.nextPhase.emit(inversor);
+        }
       }
 
 

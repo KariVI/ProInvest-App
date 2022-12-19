@@ -58,7 +58,7 @@ public class DireccionDAO {
                     direccion.setNumeroExterior(rs.getInt("numeroExterior"));
                     direccion.setNumeroInterior(rs.getInt("numeroInterior"));
                     direccion.setIdDatoSepomex(rs.getInt("idDatosSepomex"));
-                    direccion.setIdInversionista(rs.getInt("idInversionista"));
+                    direccion.setIdInversionista(rs.getString("idInversionista"));
                 }
                 connection.close();
             }catch(SQLException s){
@@ -69,14 +69,14 @@ public class DireccionDAO {
         return direccion;
     }
     
-    public static Direccion getByIdInversionista(int idInversionista){
+    public static Direccion getByIdInversionista(String idInversionista){
         Direccion direccion = new Direccion();
         Connection connection = abrirConexionBD();
         if(connection != null){
             try{
                 String consulta = "SELECT * FROM direccion WHERE idInversionista = ?";
                 PreparedStatement ps = connection.prepareStatement(consulta);
-                ps.setInt(1, idInversionista);
+                ps.setString(1, idInversionista);
                 ResultSet rs = ps.executeQuery();
                 while(rs.next()){
                     direccion.setIdInversionista(idInversionista);
@@ -107,7 +107,7 @@ public class DireccionDAO {
                 ps.setInt(2, direccion.getNumeroExterior());
                 ps.setInt(3, direccion.getNumeroInterior());
                 ps.setInt(4, direccion.getIdDatoSepomex());
-                ps.setInt(5, direccion.getIdInversionista());
+                ps.setString(5, direccion.getIdInversionista());
                 ps.executeUpdate();
                 saved = true;
                 connection.close();

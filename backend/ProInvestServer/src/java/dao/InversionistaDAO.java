@@ -74,25 +74,19 @@ public class InversionistaDAO {
         return regInv;
     }
     
-    public static Inversionista getIdBy(String rfc) {
+    public static int getIdBy(String rfc) {
         boolean existe = false;
         Connection con = abrirConexionBD();
-        Inversionista i = new Inversionista();
+        int i = -1;
         if (con != null) {
             try {
-                String consulta = "SELECT * from inversionista WHERE rfc = ?";
+                String consulta = "SELECT idInversionista from inversionista WHERE rfc = ?";
                 PreparedStatement ps = con.prepareStatement(consulta);
                 ps.setString(1, rfc);
                 ResultSet rs = ps.executeQuery();
                 while (rs.next()) {
-                    i.setIdInversionista(rs.getInt("idInversionista"));
-                    i.setNombre(rs.getString("nombre"));
-                    i.setApellidoPaterno(rs.getString("apellidoPaterno"));
-                    i.setApellidoMaterno(rs.getString("apellidoMaterno"));
-                    i.setCelular(rs.getString("celular"));
-                    i.setDireccionip(rs.getString("direccionIp"));
-                    i.setFechaNacimiento(rs.getDate("fechaNacimiento"));
-                    i.setProfesion(rs.getString("profesion"));
+                    i=rs.getInt("idInversionista");
+               
                 }
                 con.close();
             } catch (SQLException s) {

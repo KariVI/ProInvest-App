@@ -42,4 +42,11 @@ export class UserService {
       'Content-Type':  'application/x-www-form-urlencoded'
     })});
   }
+
+  getByEmail(email:string) : Observable<IUser>{
+    let urlUser= `${this.url}/access/getUserByEmail/${email}`;
+    return this.http.get<IUser>(urlUser);
+
+
+  }
 }
