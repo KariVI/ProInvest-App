@@ -6,6 +6,7 @@ import { Inversor } from '../modules/model/Inversor';
 import { IResponse } from '../modules/model/interfaces/IResponse';
 import { DirectionInversor } from '../modules/model/Direction';
 import { InfoFinancial } from '../modules/model/InfoFinancial';
+import { IInversor } from '../modules/model/interfaces/IInversor';
 
 
 @Injectable({
@@ -19,7 +20,7 @@ export class InvestmentService {
     }
 
     createInversor(newInversor: Inversor): Observable<IResponse> {
-        let urlInversor = `${this.url}/inversionista/registrarInversionista`;
+        let urlInversor = `${this.url}/inversionistaws/crearInversionista`;
         let payload = new HttpParams()
         .set('nombres', newInversor.names)
         .set('apellidoPaterno', newInversor.lastFatherName)
@@ -60,6 +61,8 @@ export class InvestmentService {
         });
     }
 
-
-
+    getInversor(rfc: string): Observable<IInversor> {
+        let urlUser= `${this.url}/acess/getByCorreo//${rfc}`;
+        return this.http.get<IInversor>(urlUser);
+    }
 }

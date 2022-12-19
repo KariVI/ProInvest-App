@@ -1,4 +1,5 @@
 export interface IInversor{
+    id: number,
     names:string,
     lastFatherName: string,
     lastMotherName: string,

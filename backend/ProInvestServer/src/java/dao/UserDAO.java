@@ -93,7 +93,7 @@ public class UserDAO {
         User u = new User();
         if (con != null) {
             try {
-                String consulta = "SELECT * from usuario WHERE correo = ? AND contrasena = ?";
+                String consulta = "SELECT * from usuario WHERE correo = ?";
                 PreparedStatement ps = con.prepareStatement(consulta);
                 ps.setString(1, correo);
                 ResultSet rs = ps.executeQuery();

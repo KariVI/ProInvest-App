@@ -27,9 +27,9 @@ export class UserService {
     })});
   }
 
-  getUserbyEmail(email : string): Observable<IUser>{
-    let urlUser= `${this.url}/usuarios/show/${email}`;
-    return this.http.get<IUser>(urlUser);
+  getUserbyEmail(email : string): Observable<boolean>{
+    let urlUser= `${this.url}/access/getByCorreo/${email}`;
+    return this.http.get<boolean>(urlUser);
   }
   
   login(user:User):Observable<IResponse>{

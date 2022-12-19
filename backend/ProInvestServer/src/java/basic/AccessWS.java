@@ -54,7 +54,6 @@ public class AccessWS {
                 @PathParam("correo") String correo
     ){
         
-        String holakari;
         boolean u = UserDAO.getByCorreo(correo);
         return Response.status(Response.Status.OK).header("Access-Control-Allow-Origin", "*").entity(new Gson().toJson(u)).build();
     }  

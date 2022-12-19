@@ -81,19 +81,29 @@ export class RegisterUserComponent implements OnInit {
     return result;
   }
 
+  duplicateUser(){
+    let email=this.userForm.get('email')?.value.toString()
+    let existUser: Observable<boolean> = this.userService.getUserbyEmail(email);
+    existUser.subscribe(
+      responseValue => {
+        
+        return responseValue;
+    });
+  }
 
 
   createUser(){
-    let user: User = new User();
-    
-    
-    user.email=this.userForm.get('email')?.value.toString(),
-    user.password=this.userForm.get('password')?.value.toString()
-    
 
-    let response: Observable<IResponse>= this.userService.createUser(user);
-  
-    let message: string ="";
+    let email=this.userForm.get('email')?.value.toString()
+    let existUser: Observable<boolean> = this.userService.getUserbyEmail(email);
+    existUser.subscribe(
+      responseValue => {
+    if(!responseValue){
+      let user: User = new User();
+      user.email=this.userForm.get('email')?.value.toString();
+      user.password=this.userForm.get('password')?.value.toString()
+      let response: Observable<IResponse>= this.userService.createUser(user);
+      let message: string ="";
     response.subscribe(
       responseValue => {
           this.dialog
@@ -102,7 +112,14 @@ export class RegisterUserComponent implements OnInit {
           });
       },
     );
+      
+    }else{
+      this.dialog
+      .open(ConfirmMessageComponent, {
+        data: "El usuario ya se encuentra registrado"
+      });
 
-   
+    }  
+  });
   }
 }
