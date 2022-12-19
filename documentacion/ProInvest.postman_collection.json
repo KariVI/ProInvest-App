@@ -1,0 +1,607 @@
+{
+	"info": {
+		"_postman_id": "2beecb10-f52e-45ed-b262-ee93d22565fb",
+		"name": "ProInvest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20612442"
+	},
+	"item": [
+		{
+			"name": "DatoSepomex",
+			"item": [
+				{
+					"name": "getByCp",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8084/ProInvestServer/api/datoSepomex/getByCp/70300",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"ProInvestServer",
+								"api",
+								"datoSepomex",
+								"getByCp",
+								"70300"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getByIdDato",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8084/ProInvestServer/api/datoSepomex/getByIdDato/93560",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"ProInvestServer",
+								"api",
+								"datoSepomex",
+								"getByIdDato",
+								"93560"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getIdByDatosSepomex",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "estado",
+									"value": "Oaxaca",
+									"type": "text"
+								},
+								{
+									"key": "municipio",
+									"value": "Matías Romero Avendaño",
+									"type": "text"
+								},
+								{
+									"key": "colonia",
+									"value": "Juárez Sur",
+									"type": "text"
+								},
+								{
+									"key": "cp",
+									"value": "70300",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8084/ProInvestServer/api/datoSepomex/getIdByDatosSepomex",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"ProInvestServer",
+								"api",
+								"datoSepomex",
+								"getIdByDatosSepomex"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Dirección",
+			"item": [
+				{
+					"name": "getByIdDireccion",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8084/ProInvestServer/api/direccion/getByIdDireccion/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"ProInvestServer",
+								"api",
+								"direccion",
+								"getByIdDireccion",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getByIdInversionista",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8084/ProInvestServer/api/direccion/getByIdInversionista/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"ProInvestServer",
+								"api",
+								"direccion",
+								"getByIdInversionista",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "registrarDireccion",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "calle",
+									"value": "1 de mayo",
+									"type": "text"
+								},
+								{
+									"key": "numeroExterior",
+									"value": "189",
+									"type": "text"
+								},
+								{
+									"key": "numeroInterior",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "idDatoSepomex",
+									"value": "7839",
+									"type": "text"
+								},
+								{
+									"key": "idInversionista",
+									"value": "5",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8084/ProInvestServer/api/direccion/registrarDireccion",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"ProInvestServer",
+								"api",
+								"direccion",
+								"registrarDireccion"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "InformacionFinanciera",
+			"item": [
+				{
+					"name": "registrarInformacion",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "idBanco",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "clabe",
+									"value": "1928283839483",
+									"type": "text"
+								},
+								{
+									"key": "cuenta",
+									"value": "0192884848",
+									"type": "text"
+								},
+								{
+									"key": "idOrigenFondo",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8084/ProInvestServer/api/informacionFinanciera/registrarInformacion",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"ProInvestServer",
+								"api",
+								"informacionFinanciera",
+								"registrarInformacion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "validarDatosInformacion",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "clabe",
+									"value": "426575574998164358",
+									"type": "text"
+								},
+								{
+									"key": "cuenta",
+									"value": "11384599668",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8084/ProInvestServer/api/informacionFinanciera/validarDatosInformacion",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"ProInvestServer",
+								"api",
+								"informacionFinanciera",
+								"validarDatosInformacion"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "OrigenFondo",
+			"item": [
+				{
+					"name": "allOrigenFondo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8084/ProInvestServer/api/origenFondo/allOrigenFondo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"ProInvestServer",
+								"api",
+								"origenFondo",
+								"allOrigenFondo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getIdByOrigen",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8084/ProInvestServer/api/origenFondo/getIdByOrigen/Ahorro",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"ProInvestServer",
+								"api",
+								"origenFondo",
+								"getIdByOrigen",
+								"Ahorro"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Access",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "correo",
+									"value": "jose_ramon@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "contrasena",
+									"value": "70FEBCC90119ED67D0C5862760BDF2D6",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8084/ProInvestServer/api/access/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"ProInvestServer",
+								"api",
+								"access",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "correo",
+									"value": "david@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "contrasena",
+									"value": "70FEBCC90119ED67D0C5862760BDF2D6",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8084/ProInvestServer/api/access/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"ProInvestServer",
+								"api",
+								"access",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getByCorreo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8084/ProInvestServer/api/access/getByCorreo/jose_ramon@gmail.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"ProInvestServer",
+								"api",
+								"access",
+								"getByCorreo",
+								"jose_ramon@gmail.com"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Banco",
+			"item": [
+				{
+					"name": "getIdByNombre",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8084/ProInvestServer/api/banco/getIdByNombre/Banamex",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"ProInvestServer",
+								"api",
+								"banco",
+								"getIdByNombre",
+								"Banamex"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllBancos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8084/ProInvestServer/api/banco/getAllBancos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"ProInvestServer",
+								"api",
+								"banco",
+								"getAllBancos"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "InversionistaWS",
+			"item": [
+				{
+					"name": "crearInversionista",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "apellidoMaterno",
+									"value": "Hernandez",
+									"type": "text"
+								},
+								{
+									"key": "apellidoPaterno",
+									"value": "Pablo",
+									"type": "text"
+								},
+								{
+									"key": "celular",
+									"value": "2298902902",
+									"type": "text"
+								},
+								{
+									"key": "direccionip",
+									"value": "128.920.092.1",
+									"type": "text"
+								},
+								{
+									"key": "fechaNacimiento",
+									"value": "1990-04-13",
+									"type": "text"
+								},
+								{
+									"key": "nombre",
+									"value": "Julio",
+									"type": "text"
+								},
+								{
+									"key": "rfc",
+									"value": "HEPA290192093M",
+									"type": "text"
+								},
+								{
+									"key": "profesion",
+									"value": "Docente",
+									"type": "text"
+								},
+								{
+									"key": "idGradoAcademico",
+									"value": "4",
+									"type": "text"
+								},
+								{
+									"key": "idUsuario",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8084/ProInvestServer/api/inversionistaws/crearInversionista",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"ProInvestServer",
+								"api",
+								"inversionistaws",
+								"crearInversionista"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getByRfc",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8084/ProInvestServer/api/inversionistaws/getByRfc/RAVO280188HOCRJ",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"ProInvestServer",
+								"api",
+								"inversionistaws",
+								"getByRfc",
+								"RAVO280188HOCRJ"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
