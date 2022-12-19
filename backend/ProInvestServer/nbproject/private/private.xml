@@ -3,6 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
+            <file>file:/C:/Users/david/Documents/Universidad%20Veracruzana%20IS/Septimo%20semestre/Desarrollo%20de%20sistemas%20web/ProInvest-App/backend/ProInvestServer/src/java/basic/DatoSepomexWS.java</file>
+            <file>file:/C:/Users/david/Documents/Universidad%20Veracruzana%20IS/Septimo%20semestre/Desarrollo%20de%20sistemas%20web/ProInvest-App/backend/ProInvestServer/src/java/dao/InformacionFinancieraDAO.java</file>
+            <file>file:/C:/Users/david/Documents/Universidad%20Veracruzana%20IS/Septimo%20semestre/Desarrollo%20de%20sistemas%20web/ProInvest-App/backend/ProInvestServer/src/java/basic/ApplicationConfig.java</file>
+            <file>file:/C:/Users/david/Documents/Universidad%20Veracruzana%20IS/Septimo%20semestre/Desarrollo%20de%20sistemas%20web/ProInvest-App/backend/ProInvestServer/src/java/basic/DireccionWS.java</file>
+            <file>file:/C:/Users/david/Documents/Universidad%20Veracruzana%20IS/Septimo%20semestre/Desarrollo%20de%20sistemas%20web/ProInvest-App/backend/ProInvestServer/src/java/basic/BancoWS.java</file>
+            <file>file:/C:/Users/david/Documents/Universidad%20Veracruzana%20IS/Septimo%20semestre/Desarrollo%20de%20sistemas%20web/ProInvest-App/backend/ProInvestServer/src/java/dao/OrigenFondoDAO.java</file>
+            <file>file:/C:/Users/david/Documents/Universidad%20Veracruzana%20IS/Septimo%20semestre/Desarrollo%20de%20sistemas%20web/ProInvest-App/backend/ProInvestServer/src/java/basic/InformacionFinancieraWS.java</file>
+            <file>file:/C:/Users/david/Documents/Universidad%20Veracruzana%20IS/Septimo%20semestre/Desarrollo%20de%20sistemas%20web/ProInvest-App/backend/ProInvestServer/src/java/dao/DatoSepomexDAO.java</file>
+            <file>file:/C:/Users/david/Documents/Universidad%20Veracruzana%20IS/Septimo%20semestre/Desarrollo%20de%20sistemas%20web/ProInvest-App/backend/ProInvestServer/src/java/dao/BancoDAO.java</file>
+            <file>file:/C:/Users/david/Documents/Universidad%20Veracruzana%20IS/Septimo%20semestre/Desarrollo%20de%20sistemas%20web/ProInvest-App/backend/ProInvestServer/src/java/dao/UserDAO.java</file>
+            <file>file:/C:/Users/david/Documents/Universidad%20Veracruzana%20IS/Septimo%20semestre/Desarrollo%20de%20sistemas%20web/ProInvest-App/backend/ProInvestServer/src/java/dao/DireccionDAO.java</file>
+=======
             <file>file:/C:/Users/jack-/Documents/GitHub/ProInvest-App/backend/ProInvestServer/src/java/dao/UserDAO.java</file>
             <file>file:/C:/Users/jack-/Documents/GitHub/ProInvest-App/backend/ProInvestServer/src/java/dao/BancoDAO.java</file>
             <file>file:/C:/Users/jack-/Documents/GitHub/ProInvest-App/backend/ProInvestServer/src/java/pojos/User.java</file>
@@ -12,6 +25,7 @@
             <file>file:/C:/Users/jack-/Documents/GitHub/ProInvest-App/backend/ProInvestServer/src/java/dao/InformacionFinancieraDAO.java</file>
             <file>file:/C:/Users/jack-/Documents/GitHub/ProInvest-App/backend/ProInvestServer/src/java/dao/OrigenFondoDAO.java</file>
             <file>file:/C:/Users/jack-/Documents/GitHub/ProInvest-App/backend/ProInvestServer/src/java/dao/DireccionDAO.java</file>
+>>>>>>> 778c2ce96e034e46abc5d65bbdfaadfc7908d410
         </group>
     </open-files>
 </project-private>
