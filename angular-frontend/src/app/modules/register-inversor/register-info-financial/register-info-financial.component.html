@@ -8,7 +8,16 @@
                     <select class="round "  id="cbBank"  formControlName="bank" aria-label="Default select example">
                       <option *ngFor="let bank of $banks | async" [value]="bank.idBanco">{{bank.nombre}}</option>                     
                     </select>
-                    
+                    <div class="padding-tl">
+                      <div *ngFor="let validation of validationMessages.bank">
+                        <span
+                          class="text-blue"
+                          *ngIf="infoFinanceGroup.get('bank')!.hasError(validation.type)"
+                        >
+                          {{ validation.message }}
+                        </span>
+                      </div>     
+                  </div>  
                 </div>
                 <div class="form-outline mb-4">
                     <label class="form-label" for="txClabe">Clabe: </label>
@@ -45,7 +54,16 @@
                       <option *ngFor="let source of $sourceFunds | async" [value]="source.idOrigenFondo">{{source.origen}}</option>                     
 
                     </select>
-                   
+                    <div class="padding-tl">
+                      <div *ngFor="let validation of validationMessages.savings">
+                        <span
+                          class="text-blue"
+                          *ngIf="infoFinanceGroup.get('savings')!.hasError(validation.type)"
+                        >
+                          {{ validation.message }}
+                        </span>
+                      </div>     
+                  </div>  
                 </div>   
 
                 <div class="form-outline mb-4">
