@@ -136,7 +136,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8084/ProInvestServer/api/direccion/getByIdInversionista/1",
+							"raw": "http://localhost:8084/ProInvestServer/api/direccion/getByIdInversionista/DOML130490MOCRJ",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -147,7 +147,7 @@
 								"api",
 								"direccion",
 								"getByIdInversionista",
-								"1"
+								"DOML130490MOCRJ"
 							]
 						}
 					},
