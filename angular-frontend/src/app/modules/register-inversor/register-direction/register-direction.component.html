@@ -43,19 +43,11 @@
                         <label class="form-label" for="cbColony">Colonia: </label> 
                         <br>
                         <select class="round " formControlName="colony" id="cbColony" aria-label="Default select example">
-                          <option *ngFor="let place of $sepoMex | async" [value]="place.colonia">{{place.colonia}}</option>
+                          <option value="none"  disabled selected>Selecciona una colonia</option>
+                          <option *ngFor="let place of $sepoMex | async" [value]="place.colonia" >{{place.colonia}}</option>
                           
                         </select>
-                        <div class="padding-tl">
-                            <div *ngFor="let validation of validationMessages.colony">
-                              <span
-                                class="text-blue"
-                                *ngIf="directionGroup.get('colony')!.hasError(validation.type)"
-                              >
-                                {{ validation.message }}
-                              </span>
-                            </div> 
-                        </div>
+                      
                     </div>
                     <div class="form-outline mb-4">
                         <label class="form-label" for="txStreet">Calle:*</label>

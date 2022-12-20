@@ -83,9 +83,9 @@ public class AccessWS {
         
         boolean res = UserDAO.loginUser(correo, contrasena);
         if (res) {
-            resultado = new Mensaje("Usuario encontrado, you ate", false);
+            resultado = new Mensaje("Usuario encontrado", false);
         } else {
-            resultado = new Mensaje("Error, you thought you ate but u didn't", true);
+            resultado = new Mensaje("Error, usuario no encontrado", true);
         }
         return resultado;
     }    

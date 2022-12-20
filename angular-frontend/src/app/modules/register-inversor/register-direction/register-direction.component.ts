@@ -42,9 +42,7 @@ export class RegisterDirectionComponent implements OnInit {
     postalCode: new FormControl('', Validators.compose([
         Validators.required
       ])),
-    colony: new FormControl('', Validators.compose([
-        Validators.required
-      ])),
+    colony: new FormControl('' , null),
   street: new FormControl('', Validators.compose([
         Validators.required
       ])),
@@ -85,7 +83,9 @@ export class RegisterDirectionComponent implements OnInit {
 
   evaluateForm():boolean{
     let result: boolean = true;
-    if(this.directionGroup.valid){
+    let colony = this.directionGroup.get('postalCode')?.value.toString();
+
+    if(this.directionGroup.valid  && colony!="none"){
       result=false;
     }
     return result;
