@@ -20,7 +20,7 @@ public class OrigenFondoDAO {
             + "?allowPublicKeyRetrieval=true&useSSL=false";
 
     private static String username = "root";
-    private static String password = "Fairy59Atomic12";
+    private static String password = "";
 
     public static Connection abrirConexionBD() {
         Connection c = null;
